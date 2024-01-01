@@ -1,0 +1,59 @@
+import { viewWidth, viewHeight, body, canvas, ctx } from './canvas.js';
+
+const particles = [];
+
+class Particle {
+    constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
+        this.milliseconds = seconds * 1000;
+        this.startTime = performance.now();
+
+        this.startX = startX;
+        this.startY = startY;
+        this.endX = endX;
+        this.endY = endY;
+        this.objectWidth = objectWidth;
+        this.objectHeight = objectHeight;
+        this.objectColor = objectColor;
+        this.angle = angle;
+        this.onComplete = onComplete;
+    }
+
+    update() {
+        const currentTime = performance.now();
+        const elapsed = currentTime - this.startTime;
+        this.progress = Math.min(elapsed / this.milliseconds, 1);
+
+        this.currentX = this.startX + (this.endX - this.startX) * this.progress;
+        this.currentY = this.startY + (this.endY - this.startY) * this.progress;
+    }
+
+    draw() {
+        if (this.progress >= 1) {
+            this.onComplete();
+
+            // 현재 Particle 객체를 particles 배열에서 찾아서 삭제
+            const index = particles.indexOf(this);
+            particles.splice(index, 1);
+
+            return;
+        }
+
+        ctx.save();
+
+        // 그라디언트 생성
+        const gradient = ctx.createLinearGradient(this.currentX, this.currentY, this.currentX + this.objectWidth, this.currentY + this.objectHeight);
+        gradient.addColorStop(0, this.objectColor); // 시작 부분
+        gradient.addColorStop(1, 'transparent');    // 끝 부분 (transparent는 투명 색)
+        ctx.fillStyle = gradient;
+
+        ctx.translate(this.currentX + this.objectWidth / 2, this.currentY + this.objectHeight / 2); // 입자 중심으로 이동
+        ctx.rotate( (Math.PI * this.angle) / 180 );
+        ctx.translate(-(this.currentX + this.objectWidth / 2), -(this.currentY + this.objectHeight / 2)); // 원래 위치로 이동
+        
+        ctx.fillRect(this.currentX, this.currentY, this.objectWidth, this.objectHeight);
+
+        ctx.restore();
+    }
+}
+
+export { Particle, particles };
