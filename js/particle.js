@@ -31,7 +31,7 @@ class Particle {
     }
 
     easeInOutQuad(t) {
-        return 1 - Math.pow(1 - t, 3);
+        return 1 - Math.pow(1 - t, 4);
     }
 
     draw() {
@@ -43,18 +43,6 @@ class Particle {
             particles.splice(index, 1);
 
             return;
-        }
-
-        if(this.progress >= 0.8) {
-            this.endY += 0.2;
-
-            if(this.angle > 0 && this.angle < 180){
-                this.endX += 0.2;
-            }
-
-            if(this.angle > 180 && this.angle < 360){
-                this.endX -= 0.2;
-            }
         }
 
         ctx.save();
