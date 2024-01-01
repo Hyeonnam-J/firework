@@ -5,5 +5,7 @@ function fire() {
     soar(origin);
 }
 
-// 한 발 쏘기.
-fire();
+for(let i = 0; i < 1; i++){
+    // 한 발 쏘기.
+    fire();
+}

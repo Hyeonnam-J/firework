@@ -95,13 +95,15 @@ function explode(fragments) {
     const fragmentsWidth = Math.floor(Math.random()) + 2;
     const fragmentsHeight = fragmentsWidth * 10;
     const fragmentsDuration = Math.random() + 1.5;
-    const fragmentsDistance = Math.random() * 100 + 50;
+    const fragmentsMaxDistance = Math.random() * 100 + 50;
 
-    for (let angle = 0; angle < 360; angle += 15) {
+    let angle = 0;
+    while(angle < 360){
+        angle += Math.floor( (Math.random() * 10) + 5 );
         const fragmentsEndPoint = calculateCoordinates(
             fragmentsPoint_X,
             fragmentsPoint_Y,
-            fragmentsDistance,
+            fragmentsMaxDistance / Math.floor( (Math.random() * 5) + 1),
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 
