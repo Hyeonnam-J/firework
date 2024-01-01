@@ -97,13 +97,36 @@ function explode(fragments) {
     const fragmentsDuration = values.fragmentsDuration();
     const fragmentsMaxDistance = values.fragmentsMaxDistance();
 
-    let angle = 0;
-    while(angle < 360){
-        angle += values.explodeAscendingAngle();
+    for(let angle = 0; angle < 360; angle += 15){
         const fragmentsEndPoint = calculateCoordinates(
             fragmentsPoint_X,
             fragmentsPoint_Y,
-            fragmentsMaxDistance * values.fragmentsMultipleDistance(),
+            fragmentsMaxDistance,
+            angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
+        );
+
+        const particle = new Particle(
+            fragmentsPoint_X,
+            fragmentsPoint_Y,
+            fragmentsEndPoint.x,
+            fragmentsEndPoint.y,
+            fragmentsWidth,
+            fragmentsHeight,
+            fragmentsDuration,
+            fragmentsColor,
+            angle,
+            () => {
+
+            }
+        );
+        particles.push(particle);
+    }
+
+    for(let angle = 7; angle < 360; angle += 15){
+        const fragmentsEndPoint = calculateCoordinates(
+            fragmentsPoint_X,
+            fragmentsPoint_Y,
+            fragmentsMaxDistance * 0.7,
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 

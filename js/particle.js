@@ -23,8 +23,15 @@ class Particle {
         const elapsed = currentTime - this.startTime;
         this.progress = Math.min(elapsed / this.milliseconds, 1);
 
-        this.currentX = this.startX + (this.endX - this.startX) * this.progress;
-        this.currentY = this.startY + (this.endY - this.startY) * this.progress;
+        // 가중치 함수
+        const easingFactor = this.easeInOutQuad(this.progress);
+
+        this.currentX = this.startX + (this.endX - this.startX) * easingFactor;
+        this.currentY = this.startY + (this.endY - this.startY) * easingFactor;
+    }
+
+    easeInOutQuad(t) {
+        return 1 - Math.pow(1 - t, 3);
     }
 
     draw() {
@@ -38,6 +45,18 @@ class Particle {
             return;
         }
 
+        if(this.progress >= 0.8) {
+            this.endY += 0.2;
+
+            if(this.angle > 0 && this.angle < 180){
+                this.endX += 0.2;
+            }
+
+            if(this.angle > 180 && this.angle < 360){
+                this.endX -= 0.2;
+            }
+        }
+
         ctx.save();
 
         // 그라디언트 생성
@@ -45,6 +64,12 @@ class Particle {
         gradient.addColorStop(0, this.objectColor); // 시작 부분
         gradient.addColorStop(1, 'transparent');    // 끝 부분 (transparent는 투명 색)
         ctx.fillStyle = gradient;
+
+        // opacity
+        const startOpacity = 1;  
+        const endOpacity = 0;  
+        const currentOpacity = startOpacity - (startOpacity - endOpacity) * this.progress;
+        ctx.globalAlpha = currentOpacity;
 
         ctx.translate(this.currentX + this.objectWidth / 2, this.currentY + this.objectHeight / 2); // 입자 중심으로 이동
         ctx.rotate( (Math.PI * this.angle) / 180 );

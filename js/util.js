@@ -22,7 +22,7 @@ const values = {
     fragmentsWidth: 2,
     fragmentsHeight: 20,
     fragmentsDuration: () => Math.random() + 1.5,
-    fragmentsMaxDistance: () => ( Math.random() * 30 ) + 80,
+    fragmentsMaxDistance: () => ( Math.random() * 20 ) + 130,
 
     explodeAscendingAngle: () => Math.floor( (Math.random() * 10) + 5 ),
     fragmentsMultipleDistance: () => (Math.floor( Math.random() * 5 ) + 5) / 10,
