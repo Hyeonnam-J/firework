@@ -5,7 +5,10 @@ function fire() {
     soar(origin);
 }
 
-for(let i = 0; i < 1; i++){
+for(let i = 0; i < 10; i++){
     // 한 발 쏘기.
-    fire();
+    // fire();
+    console.log(
+        Math.random() * 30
+    );
 }

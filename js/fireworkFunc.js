@@ -2,27 +2,27 @@ import { Particle, particles } from './particle.js';
 import { viewWidth, viewHeight, body, canvas, ctx } from './canvas.js';
 import { move } from './animate.js';
 import { explosionArr, explosionType } from './explosion.js';
-import { calculateCoordinates } from './util.js';
+import { calculateCoordinates, values } from './util.js';
 
 // y 시작점은 항상 동일
 const originPoint_Y = viewHeight;
 
 function create() {
     // 불꽃 크기
-    const originWidth = Math.floor(Math.random()) + 2;
-    const originHeight = originWidth * 40;
+    const originWidth = values.originWidth;
+    const originHeight = values.originHeight;
 
     // 불꽃 속도
-    const originDuration = Math.random() * 2 + 1;
+    const originDuration = values.originDuration();
 
     // 불꽃 색
-    const originColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    const originColor = values.originColor();
 
     // 불꽃 x 스타팅 포인트
-    const originPoint_X = Math.floor(Math.random() * viewWidth) - originWidth / 2;
+    const originPoint_X = values.originPoint_X(viewWidth, originWidth);
 
     // 불꽃 y 엔드 포인트
-    const endPoint = ((Math.random() * 0.4) + 0.2) * viewHeight;
+    const endPoint = values.endPoint(viewHeight);
 
     const origin = {
         originWidth: originWidth,
@@ -92,18 +92,18 @@ function explode(fragments) {
     const fragmentsPoint_X = fragments.fragmentsPoint_X;
     const fragmentsPoint_Y = fragments.fragmentsPoint_Y;
     const fragmentsColor = fragments.fragmentsColor;
-    const fragmentsWidth = Math.floor(Math.random()) + 2;
-    const fragmentsHeight = fragmentsWidth * 10;
-    const fragmentsDuration = Math.random() + 1.5;
-    const fragmentsMaxDistance = Math.random() * 100 + 50;
+    const fragmentsWidth = values.fragmentsWidth;
+    const fragmentsHeight = values.fragmentsHeight;
+    const fragmentsDuration = values.fragmentsDuration();
+    const fragmentsMaxDistance = values.fragmentsMaxDistance();
 
     let angle = 0;
     while(angle < 360){
-        angle += Math.floor( (Math.random() * 10) + 5 );
+        angle += values.explodeAscendingAngle();
         const fragmentsEndPoint = calculateCoordinates(
             fragmentsPoint_X,
             fragmentsPoint_Y,
-            fragmentsMaxDistance / Math.floor( (Math.random() * 5) + 1),
+            fragmentsMaxDistance * values.fragmentsMultipleDistance(),
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 

@@ -11,4 +11,21 @@ function calculateCoordinates(startX, startY, distance, angleInDegrees) {
     return { x: x, y: y };
 }
 
-export { calculateCoordinates };
+const values = {
+    originWidth: 2,
+    originHeight: 80,
+    originDuration: () => Math.random() + 1.5,
+    originColor: () => `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
+    originPoint_X: (viewWidth, originWidth) => Math.floor(Math.random() * viewWidth) - originWidth / 2,
+    endPoint: (viewHeight) => ( (Math.random() * 0.4) + 0.2 ) * viewHeight,
+
+    fragmentsWidth: 2,
+    fragmentsHeight: 20,
+    fragmentsDuration: () => Math.random() + 1.5,
+    fragmentsMaxDistance: () => ( Math.random() * 30 ) + 80,
+
+    explodeAscendingAngle: () => Math.floor( (Math.random() * 10) + 5 ),
+    fragmentsMultipleDistance: () => (Math.floor( Math.random() * 5 ) + 5) / 10,
+}
+
+export { calculateCoordinates, values };
