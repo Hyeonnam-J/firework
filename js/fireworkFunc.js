@@ -19,7 +19,7 @@ function create() {
     const originColor = values.originColor();
 
     // 불꽃 x 스타팅 포인트
-    const originPoint_X = values.originPoint_X(viewWidth, originWidth);
+    const originPoint_X = values.originPoint_X(viewWidth);
 
     // 불꽃 y 엔드 포인트
     const endPoint = values.endPoint(viewHeight);
@@ -95,13 +95,13 @@ function explode(fragments) {
     const fragmentsWidth = values.fragmentsWidth;
     const fragmentsHeight = values.fragmentsHeight;
     const fragmentsDuration = values.fragmentsDuration();
-    const fragmentsMaxDistance = values.fragmentsMaxDistance();
+    const fragmentsDistance = values.fragmentsDistance();
 
     for(let angle = 0; angle < 360; angle += 15){
         const fragmentsEndPoint = calculateCoordinates(
             fragmentsPoint_X,
             fragmentsPoint_Y,
-            fragmentsMaxDistance,
+            fragmentsDistance,
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 
@@ -126,7 +126,7 @@ function explode(fragments) {
         const fragmentsEndPoint = calculateCoordinates(
             fragmentsPoint_X,
             fragmentsPoint_Y,
-            fragmentsMaxDistance * 0.7,
+            fragmentsDistance * 0.7,
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 

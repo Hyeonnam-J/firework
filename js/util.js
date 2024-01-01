@@ -14,18 +14,27 @@ function calculateCoordinates(startX, startY, distance, angleInDegrees) {
 const values = {
     originWidth: 2,
     originHeight: 80,
-    originDuration: () => Math.random() + 1.5,
-    originColor: () => `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
-    originPoint_X: (viewWidth, originWidth) => Math.floor(Math.random() * viewWidth) - originWidth / 2,
+    originDuration: () => Math.random() + 3,
+    originColor: () => colors[ Math.floor( Math.random() * colors.length ) ],
+    originPoint_X: (viewWidth) => (Math.random() * 8 + 1) / 10 * viewWidth,
     endPoint: (viewHeight) => ( (Math.random() * 0.4) + 0.2 ) * viewHeight,
 
     fragmentsWidth: 2,
     fragmentsHeight: 20,
     fragmentsDuration: () => Math.random() + 1.5,
-    fragmentsMaxDistance: () => ( Math.random() * 20 ) + 130,
-
-    explodeAscendingAngle: () => Math.floor( (Math.random() * 10) + 5 ),
-    fragmentsMultipleDistance: () => (Math.floor( Math.random() * 5 ) + 5) / 10,
+    fragmentsDistance: () => ( Math.random() * 20 ) + 130,
 }
 
-export { calculateCoordinates, values };
+const colors = [
+    "#FFEB3B",   // 노란 계통
+    "#2196F3",   // 블루 계통
+    "#00FF00",   // 연두 계통
+    "#FF5722",   // 빨간 계통
+    "#FF4081",   // 핑크 계통
+    "#8A2BE2",   // 보라 계통
+    "#FFFFFF",   // 흰색 계통
+    "#00FFFF",   // 청록 계통
+    "#FFA500"    // 주황 계통
+];
+
+export { calculateCoordinates, values, colors };
