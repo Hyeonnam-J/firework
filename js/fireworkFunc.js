@@ -66,20 +66,19 @@ function soar(origin) {
             }
 
             const fragmentsIndex = Math.floor(Math.random() * fragmentsArr.length);
-            // const fragmentsType = fragmentsArr[fragmentsIndex];
-            const fragmentsType = 'explode'
+            const extractFragmentsType = fragmentsArr[fragmentsIndex];
 
-            switch (fragmentsType) {
+            switch (extractFragmentsType) {
                 case fragmentsType.explode:
-                    explode(fragments);
+                    explode(fragments, false);
                     break;
 
-                case fragmentsType.twinkle:
-                    twinkle(fragments);
+                case fragmentsType.explodeWithAfterImage:
+                    explode(fragments, true);
                     break;
 
                 default:
-                    explode(fragments);
+                    explode(fragments, false);
                     break;
             }
         }

@@ -2,29 +2,27 @@ import { Particle, particles } from './particle.js';
 import { calculateCoordinates, values } from './util.js';
 import Animation from './Animation.js';
 
-function explode(fragments) {
-    generateExplosionFragments(fragments, 1, 15, 0.99);
-    generateExplosionFragments(fragments, 2, 15, 0.99);
-    generateExplosionFragments(fragments, 3, 15, 0.99);
-    generateExplosionFragments(fragments, 2, 23, 0.98); // x1.5
-    generateExplosionFragments(fragments, 3, 17, 0.97);
-    generateExplosionFragments(fragments, 4, 35, 0.96); // x2
-    generateExplosionFragments(fragments, 5, 23, 0.95);
-    generateExplosionFragments(fragments, 6, 70, 0.93); // x3
-    generateExplosionFragments(fragments, 7, 24, 0.91);
-    generateExplosionFragments(fragments, 8, 74, 0.85); // x3
-    generateExplosionFragments(fragments, 9, 25, 0.8);
-    generateExplosionFragments(fragments, 0, 77, 0.75); // x3
-    generateExplosionFragments(fragments, 0, 27, 0.7);
-    generateExplosionFragments(fragments, 1, 31, 0.6);
-    generateExplosionFragments(fragments, 2, 34, 0.5);
-    generateExplosionFragments(fragments, 3, 41, 0.4);
-    generateExplosionFragments(fragments, 4, 43, 0.3);
-
-    if(! Animation.isMove) requestAnimationFrame(Animation.move);
+function explode(fragments, isAfterImage) {
+    generateExplosionFragments(fragments, 1, 15, 0.9, isAfterImage);
+    generateExplosionFragments(fragments, 2, 15, 0.9, isAfterImage);
+    generateExplosionFragments(fragments, 3, 15, 0.9, isAfterImage);
+    generateExplosionFragments(fragments, 2, 23, 0.9, isAfterImage); // x1.5
+    generateExplosionFragments(fragments, 3, 17, 0.9, isAfterImage);
+    generateExplosionFragments(fragments, 4, 35, 0.9, isAfterImage); // x2
+    generateExplosionFragments(fragments, 5, 23, 0.9, isAfterImage);
+    generateExplosionFragments(fragments, 6, 70, 0.9, isAfterImage); // x3
+    generateExplosionFragments(fragments, 7, 24, 0.9, isAfterImage);
+    generateExplosionFragments(fragments, 8, 74, 0.8, isAfterImage); // x3
+    generateExplosionFragments(fragments, 9, 25, 0.8, isAfterImage);
+    generateExplosionFragments(fragments, 0, 77, 0.7, isAfterImage); // x3
+    generateExplosionFragments(fragments, 0, 27, 0.7, isAfterImage);
+    generateExplosionFragments(fragments, 1, 31, 0.6, isAfterImage);
+    generateExplosionFragments(fragments, 2, 34, 0.5, isAfterImage);
+    generateExplosionFragments(fragments, 3, 41, 0.4, isAfterImage);
+    generateExplosionFragments(fragments, 4, 43, 0.3, isAfterImage);
 }
 
-function generateExplosionFragments(fragments, startAngle, angleGap, distancePercentage){
+function generateExplosionFragments(fragments, startAngle, angleGap, distancePercentage, isAfterImage){
     const fragmentsPoint_X = fragments.fragmentsPoint_X;
     const fragmentsPoint_Y = fragments.fragmentsPoint_Y;
     const fragmentsColor = fragments.fragmentsColor;
@@ -52,10 +50,26 @@ function generateExplosionFragments(fragments, startAngle, angleGap, distancePer
             fragmentsColor,
             angle,
             () => {
-
+                if(isAfterImage){
+                    const particle = new Particle(
+                        fragmentsEndPoint.x,
+                        fragmentsEndPoint.y,
+                        fragmentsEndPoint.x,
+                        fragmentsEndPoint.y + 10,
+                        fragmentsWidth,
+                        fragmentsHeight,
+                        values.afterImageDuration(),
+                        fragmentsColor,
+                        180,
+                        () => {}
+                    )
+                    particles.push(particle);
+                    if(! Animation.isMove) requestAnimationFrame(Animation.move);
+                }
             }
         );
         particles.push(particle);
+        if(! Animation.isMove) requestAnimationFrame(Animation.move);
     }
 }
 

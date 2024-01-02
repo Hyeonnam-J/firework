@@ -23,6 +23,8 @@ const values = {
     fragmentsHeight: 20,
     fragmentsDuration: () => Math.random() * 2 + 3,
     fragmentsDistance: () => ( Math.random() * 100 ) + 200,
+
+    afterImageDuration: () => Math.random() * 2 + 1,
 }
 
 const colors = [

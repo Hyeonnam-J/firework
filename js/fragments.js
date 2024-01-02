@@ -1,8 +1,8 @@
-const fragmentsArr = ['explode', 'twinkle'];
+const fragmentsArr = ['explode', 'explodeWithAfterImage'];
 
 const fragmentsType = {
     explode: 'explode',
-    twinkle: 'twinkle',
+    explodeWithAfterImage: 'explodeWithAfterImage',
 }
 
 export { fragmentsArr, fragmentsType };
