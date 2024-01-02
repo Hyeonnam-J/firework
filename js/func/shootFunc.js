@@ -3,14 +3,14 @@ import { calculateCoordinates, values } from '../util.js';
 import Animation from '../Animation.js';
 import Fragment from '../fragments/fragment.js';
 
-function shoot(origin, afterEffect){
-    generateShootingFragments(origin, -52.5, 52.5, 15, 1, afterEffect);
-    generateShootingFragments(origin, -45, 45, 15, 0.85, afterEffect);
-    generateShootingFragments(origin, -37.5, 37.5, 15, 0.7, afterEffect);
-    generateShootingFragments(origin, -30, 30, 15, 0.55, afterEffect);
+function shoot(origin, fragmentsActType){
+    generateShootingFragments(origin, -52.5, 52.5, 15, 1, fragmentsActType);
+    generateShootingFragments(origin, -45, 45, 15, 0.85, fragmentsActType);
+    generateShootingFragments(origin, -37.5, 37.5, 15, 0.7, fragmentsActType);
+    generateShootingFragments(origin, -30, 30, 15, 0.55, fragmentsActType);
 }
 
-function generateShootingFragments(origin, startAngle, endAngle, angleGap, distancePercentage, afterEffect){
+function generateShootingFragments(origin, startAngle, endAngle, angleGap, distancePercentage, fragmentsActType){
     const originPoint_X = origin.originPoint_X;
     const originPoint_Y = origin.originPoint_Y;
     const fragmentsColor = origin.fragmentsColor;
@@ -38,7 +38,7 @@ function generateShootingFragments(origin, startAngle, endAngle, angleGap, dista
             fragmentsColor,
             angle,
             () => {
-                switch(afterEffect){
+                switch(fragmentsActType){
                     case Fragment.fragmentsActType.shoot:
                         break;
 
