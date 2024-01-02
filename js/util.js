@@ -14,15 +14,18 @@ function calculateCoordinates(startX, startY, distance, angleInDegrees) {
 const values = {
     originWidth: 2,
     originHeight: 80,
-    originDuration: () => Math.random() * 2 + 3,
+    originShortDuration: () => Math.random() * 1 + 1,
+    originDefaultDuration: () => Math.random() * 2 + 3,
     originColor: () => colors[ Math.floor( Math.random() * colors.length ) ],
     originPoint_X: (viewWidth) => (Math.random() * 8 + 1) / 10 * viewWidth, // 화면의 10~90% 사이
-    endPoint: (viewHeight) => ( (Math.random() * 0.4) + 0.2 ) * viewHeight,
+    originShortEndPoint: (viewHeight) => ( (Math.random() * 0.2) + 0.5 ) * viewHeight,
+    originDefaultEndPoint: (viewHeight) => ( (Math.random() * 0.4) + 0.2 ) * viewHeight,
 
     fragmentsWidth: 2,
     fragmentsHeight: 20,
     fragmentsDuration: () => Math.random() * 2 + 3,
-    fragmentsDistance: () => ( Math.random() * 100 ) + 200,
+    fragmentsDefaultDistance: () => ( Math.random() * 100 ) + 200,
+    fragmentsLongDistance: () => ( Math.random() * 200 ) + 300,
 
     afterImageSize: 4,
     afterImageDuration: () => Math.random() * 2 + 1,
