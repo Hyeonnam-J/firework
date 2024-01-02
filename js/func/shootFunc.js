@@ -1,7 +1,7 @@
-import { Particle, particles } from './particle.js';
-import { calculateCoordinates, values } from './util.js';
-import Animation from './Animation.js';
-import { fragmentsType } from './fragments.js';
+import { Particle, particles } from '../fragments/particle.js'; 
+import { calculateCoordinates, values } from '../util.js';
+import Animation from '../Animation.js';
+import { fragmentsType } from '../fragments/fragments.js'; 
 
 function shoot(fragments, afterEffect){
     generateShootingFragments(fragments, -30, 30, 30, 1, afterEffect);

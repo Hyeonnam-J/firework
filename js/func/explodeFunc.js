@@ -1,7 +1,7 @@
-import { Particle, particles } from './particle.js';
-import { calculateCoordinates, values } from './util.js';
-import Animation from './Animation.js';
-import { fragmentsType } from './fragments.js';
+import { Particle, particles } from '../fragments/particle.js'; 
+import { calculateCoordinates, values } from '../util.js';
+import Animation from '../Animation.js';
+import { fragmentsType } from '../fragments/fragments.js'; 
 
 function explode(fragments, afterEffect) {
     generateExplosionFragments(fragments, 1, 15, 0.9, afterEffect);

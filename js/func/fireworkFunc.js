@@ -1,8 +1,8 @@
-import { Particle, particles } from './particle.js';
-import { viewWidth, viewHeight } from './canvas.js';
-import Animation from './Animation.js';
-import { fragmentsArr, fragmentsType } from './fragments.js';
-import { values } from './util.js';
+import { Particle, particles } from '../fragments/particle.js'; 
+import { viewWidth, viewHeight } from '../canvas.js';
+import Animation from '../Animation.js';
+import { fragmentsArr, fragmentsType } from '../fragments/fragments.js'; 
+import { values } from '../util.js';
 import { explode } from './explodeFunc.js';
 import { shoot } from './shootFunc.js';
 

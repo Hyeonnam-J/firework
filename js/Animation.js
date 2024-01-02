@@ -1,5 +1,5 @@
 import { ctx } from './canvas.js';
-import { particles } from './particle.js';
+import { particles } from './fragments/particle.js';
 
 export default class Animation {
     static isMove = false;
