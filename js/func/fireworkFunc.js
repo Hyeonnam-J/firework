@@ -1,4 +1,4 @@
-import Particle from '../fragments/particle.js'; 
+import Particle from '../fragments/Particle.js'; 
 import { viewWidth, viewHeight } from '../canvas.js';
 import Animation from '../Animation.js';
 import { values } from '../util.js';

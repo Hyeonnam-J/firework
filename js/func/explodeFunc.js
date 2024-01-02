@@ -1,4 +1,4 @@
-import Particle from '../fragments/particle.js'; 
+import Particle from '../fragments/Particle.js'; 
 import { calculateCoordinates, values } from '../util.js';
 import Animation from '../Animation.js';
 import Fragment from '../fragments/fragment.js';
@@ -75,8 +75,7 @@ function generateExplosionFragments(origin, startAngle, angleGap, distancePercen
                             values.fallingParticlesSize,
                             values.fallingParticlesDuration(),
                             fragmentsColor,
-                            180,
-                            () => {}
+                            180
                         )
                         Fragment.fragmentArr.push(particle);
                         if(! Animation.isMove) requestAnimationFrame(Animation.move);

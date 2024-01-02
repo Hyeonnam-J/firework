@@ -5,7 +5,10 @@ import Animation from '../Animation.js';
 import { values } from '../util.js';
 
 export default class Particle {
-    constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
+    constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, 
+        onComplete = () => {},
+        isTrace = true
+    ) {
         this.milliseconds = seconds * 1000;
         this.startTime = performance.now();
 
@@ -18,6 +21,7 @@ export default class Particle {
         this.objectColor = objectColor;
         this.angle = angle;
         this.onComplete = onComplete;
+        this.isTrace = isTrace;
 
         this.traceCount = 0;
     }
@@ -67,20 +71,22 @@ export default class Particle {
 
         ctx.restore();
 
-        this.traceCount ++;
-        if(this.traceCount === 10){
-            this.traceCount = 0;
+        if(this.isTrace){
+            this.traceCount ++;
+            if(this.traceCount === 10){
+                this.traceCount = 0;
 
-            const trace = new Trace(
-                this.currentX,
-                this.currentY,
-                values.traceSize,
-                values.traceSize,
-                this.objectColor
-            );
-    
-            Fragment.fragmentArr.push(trace);
-            if(! Animation.isMove) requestAnimationFrame(Animation.move);
-        }
+                const trace = new Trace(
+                    this.currentX,
+                    this.currentY,
+                    values.traceSize,
+                    values.traceSize,
+                    this.objectColor
+                );
+        
+                Fragment.fragmentArr.push(trace);
+                if(! Animation.isMove) requestAnimationFrame(Animation.move);
+            }
+        }   // if(this.isTrace){
     }
 }
