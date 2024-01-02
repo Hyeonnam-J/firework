@@ -1,8 +1,9 @@
 import { Particle, particles } from './particle.js';
 import { viewWidth, viewHeight, body, canvas, ctx } from './canvas.js';
 import { move } from './animate.js';
-import { explosionArr, explosionType } from './explosion.js';
-import { calculateCoordinates, values } from './util.js';
+import { fragmentsArr, fragmentsType } from './fragments.js';
+import { values } from './util.js';
+import { explode } from './explodeFunc.js';
 
 // y 시작점은 항상 동일
 const originPoint_Y = viewHeight;
@@ -64,16 +65,16 @@ function soar(origin) {
                 fragmentsColor: originColor,
             }
 
-            const explosionIndex = Math.floor(Math.random() * explosionArr.length);
-            // const explosionType = explosionArr[explosionIndex];
-            const explosionType = 'explode'
+            const fragmentsIndex = Math.floor(Math.random() * fragmentsArr.length);
+            // const fragmentsType = fragmentsArr[fragmentsIndex];
+            const fragmentsType = 'explode'
 
-            switch (explosionType) {
-                case explosionType.explode:
+            switch (fragmentsType) {
+                case fragmentsType.explode:
                     explode(fragments);
                     break;
 
-                case explosionType.twinkle:
+                case fragmentsType.twinkle:
                     twinkle(fragments);
                     break;
 
@@ -88,66 +89,5 @@ function soar(origin) {
     requestAnimationFrame(move);
 }
 
-function explode(fragments) {
-    const fragmentsPoint_X = fragments.fragmentsPoint_X;
-    const fragmentsPoint_Y = fragments.fragmentsPoint_Y;
-    const fragmentsColor = fragments.fragmentsColor;
-    const fragmentsWidth = values.fragmentsWidth;
-    const fragmentsHeight = values.fragmentsHeight;
-    const fragmentsDuration = values.fragmentsDuration();
-    const fragmentsDistance = values.fragmentsDistance();
 
-    for(let angle = 0; angle < 360; angle += 15){
-        const fragmentsEndPoint = calculateCoordinates(
-            fragmentsPoint_X,
-            fragmentsPoint_Y,
-            fragmentsDistance,
-            angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
-        );
-
-        const particle = new Particle(
-            fragmentsPoint_X,
-            fragmentsPoint_Y,
-            fragmentsEndPoint.x,
-            fragmentsEndPoint.y,
-            fragmentsWidth,
-            fragmentsHeight,
-            fragmentsDuration,
-            fragmentsColor,
-            angle,
-            () => {
-
-            }
-        );
-        particles.push(particle);
-    }
-
-    for(let angle = 7; angle < 360; angle += 15){
-        const fragmentsEndPoint = calculateCoordinates(
-            fragmentsPoint_X,
-            fragmentsPoint_Y,
-            fragmentsDistance * 0.7,
-            angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
-        );
-
-        const particle = new Particle(
-            fragmentsPoint_X,
-            fragmentsPoint_Y,
-            fragmentsEndPoint.x,
-            fragmentsEndPoint.y,
-            fragmentsWidth,
-            fragmentsHeight,
-            fragmentsDuration,
-            fragmentsColor,
-            angle,
-            () => {
-
-            }
-        );
-        particles.push(particle);
-    }
-
-    requestAnimationFrame(move);
-}
-
-export { create, soar, explode };
+export { create, soar };

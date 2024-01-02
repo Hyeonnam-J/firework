@@ -31,7 +31,7 @@ class Particle {
     }
 
     easeInOutQuad(t) {
-        return 1 - Math.pow(1 - t, 4);
+        return 1 - Math.pow(1 - t, 3);
     }
 
     draw() {

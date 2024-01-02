@@ -1,4 +1,4 @@
-import { create, soar, explode } from './fireworkFunc.js';
+import { create, soar } from './fireworkFunc.js';
 
 function fire() {
     let origin = create();
