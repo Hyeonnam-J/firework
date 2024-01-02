@@ -1,17 +1,17 @@
 const fragmentArr = [];
 
-const fragmentActArr = [
+const fragmentsActArr = [
     'explode', 
-    'explodeWithFallingFragments',
+    'explodeWithFallingParticles',
 
     'shoot',
 ];
 
-const fragmentActType = {
+const fragmentsActType = {
     explode: 'explode',
-    explodeWithFallingFragments: 'explodeWithFallingFragments',
+    explodeWithFallingParticles: 'explodeWithFallingParticles',
     
     shoot: 'shoot',
 }
 
-export { fragmentArr, fragmentActArr, fragmentActType };
+export { fragmentArr, fragmentsActArr, fragmentsActType };
