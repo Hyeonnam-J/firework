@@ -12,7 +12,7 @@ function calculateCoordinates(startX, startY, distance, angleInDegrees) {
 }
 
 const values = {
-    originWidth: 2,
+    originWidth: 2.5,
     originHeight: 80,
     originShortDuration: () => Math.random() * 1 + 1,
     originDefaultDuration: () => Math.random() * 2 + 3,
@@ -21,13 +21,13 @@ const values = {
     originShortEndPoint: (viewHeight) => ( (Math.random() * 0.2) + 0.5 ) * viewHeight,
     originDefaultEndPoint: (viewHeight) => ( (Math.random() * 0.4) + 0.2 ) * viewHeight,
 
-    fragmentsWidth: 2,
+    fragmentsWidth: 4,
     fragmentsHeight: 20,
     fragmentsDuration: () => Math.random() * 2 + 3,
     fragmentsDefaultDistance: () => ( Math.random() * 100 ) + 200,
-    fragmentsLongDistance: () => ( Math.random() * 200 ) + 300,
+    fragmentsLongDistance: () => ( Math.random() * 200 ) + 400,
 
-    fallingParticlesSize: 4,
+    fallingParticlesSize: 6,
     fallingParticlesDuration: () => Math.random() * 2 + 1,
 
     traceSize: 1,
