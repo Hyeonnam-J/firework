@@ -1,9 +1,9 @@
 import { ctx } from '../canvas.js';
+import { values } from '../util.js';
 import Fragment from './fragment.js';
 
 export default class Trace {
     constructor(x, y, objectWidth, objectHeight, objectColor) {
-        this.milliseconds = 3 * 1000;
         this.startTime = performance.now();
 
         this.x = x;
@@ -16,7 +16,7 @@ export default class Trace {
     update() {
         const currentTime = performance.now();
         const elapsed = currentTime - this.startTime;
-        this.progress = Math.min(elapsed / this.milliseconds, 1);
+        this.progress = Math.min(elapsed / values.traceDuration, 1);
     }
 
     draw() {
@@ -30,7 +30,7 @@ export default class Trace {
         }
 
         ctx.fillStyle = this.objectColor;
-        ctx.globalAlpha = 0.1;
+        ctx.globalAlpha = 0.2;
         ctx.fillRect(this.x, this.y, this.objectWidth, this.objectHeight);
     }
 }

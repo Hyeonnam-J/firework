@@ -2,6 +2,7 @@ import { ctx } from '../canvas.js';
 import Trace from './Trace.js';
 import Fragment from './fragment.js';
 import Animation from '../Animation.js';
+import { values } from '../util.js';
 
 export default class Particle {
     constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
@@ -17,6 +18,8 @@ export default class Particle {
         this.objectColor = objectColor;
         this.angle = angle;
         this.onComplete = onComplete;
+
+        this.traceCount = 0;
     }
 
     update() {
@@ -64,15 +67,20 @@ export default class Particle {
 
         ctx.restore();
 
-        // const trace = new Trace(
-        //     this.currentX,
-        //     this.currentY,
-        //     this.objectWidth,
-        //     this.objectHeight,
-        //     this.objectColor
-        // );
+        this.traceCount ++;
+        if(this.traceCount === 10){
+            this.traceCount = 0;
 
-        // Fragment.fragmentArr.push(trace);
-        // if(! Animation.isMove) requestAnimationFrame(Animation.move);
+            const trace = new Trace(
+                this.currentX,
+                this.currentY,
+                values.traceSize,
+                values.traceSize,
+                this.objectColor
+            );
+    
+            Fragment.fragmentArr.push(trace);
+            if(! Animation.isMove) requestAnimationFrame(Animation.move);
+        }
     }
 }

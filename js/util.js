@@ -29,6 +29,9 @@ const values = {
 
     fallingParticlesSize: 4,
     fallingParticlesDuration: () => Math.random() * 2 + 1,
+
+    traceSize: 1,
+    traceDuration: 2000,    // ms
 }
 
 const colors = [
