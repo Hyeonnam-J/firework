@@ -23,7 +23,6 @@ class Particle {
         const elapsed = currentTime - this.startTime;
         this.progress = Math.min(elapsed / this.milliseconds, 1);
 
-        // 가중치 함수
         const easingFactor = this.easeInOutQuad(this.progress);
 
         this.currentX = this.startX + (this.endX - this.startX) * easingFactor;

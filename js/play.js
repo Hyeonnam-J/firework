@@ -9,6 +9,6 @@ for(let i = 0; i < 2; i++){
     // 한 발 쏘기.
     fire();
     // console.log(
-    //     Math.random() * 8 + 1
+    //     0.8 + Math.random() * 0.2
     // );
 }
