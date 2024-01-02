@@ -5,10 +5,15 @@ function fire() {
     soar(origin);
 }
 
-for(let i = 0; i < 2; i++){
-    // 한 발 쏘기.
-    fire();
-    // console.log(
-    //     0.8 + Math.random() * 0.2
-    // );
+for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+        fire();
+    }, i * 300);
 }
+
+// for(let i = 0; i < 10; i++){
+//     fire();
+//     // console.log(
+//     //     0.8 + Math.random() * 0.2
+//     // );
+// }

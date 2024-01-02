@@ -1,6 +1,6 @@
 import { Particle, particles } from './particle.js';
 import { calculateCoordinates, values } from './util.js';
-import { move } from './animate.js';
+import Animation from './Animation.js';
 
 function explode(fragments) {
     generateExplosionFragments(fragments, 1, 15, 0.99);
@@ -21,7 +21,7 @@ function explode(fragments) {
     generateExplosionFragments(fragments, 3, 41, 0.4);
     generateExplosionFragments(fragments, 4, 43, 0.3);
 
-    requestAnimationFrame(move);
+    if(! Animation.isMove) requestAnimationFrame(Animation.move);
 }
 
 function generateExplosionFragments(fragments, startAngle, angleGap, distancePercentage){
