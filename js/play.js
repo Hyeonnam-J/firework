@@ -5,7 +5,7 @@ function fire() {
     soar(origin);
 }
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 2; i++) {
     setTimeout(() => {
         fire();
     }, i * 300);

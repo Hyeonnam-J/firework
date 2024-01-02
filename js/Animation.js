@@ -1,5 +1,5 @@
-import { viewWidth, viewHeight, body, canvas, ctx } from './canvas.js';
-import { Particle, particles } from './particle.js';
+import { ctx } from './canvas.js';
+import { particles } from './particle.js';
 
 export default class Animation {
     static isMove = false;

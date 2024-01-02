@@ -13,4 +13,4 @@ canvas.height = viewHeight;
 
 const ctx = canvas.getContext('2d');
 
-export { viewWidth, viewHeight, body, canvas, ctx };
+export { viewWidth, viewHeight, ctx };

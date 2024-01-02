@@ -1,5 +1,5 @@
 import { Particle, particles } from './particle.js';
-import { viewWidth, viewHeight, body, canvas, ctx } from './canvas.js';
+import { viewWidth, viewHeight } from './canvas.js';
 import Animation from './Animation.js';
 import { fragmentsArr, fragmentsType } from './fragments.js';
 import { values } from './util.js';
@@ -88,6 +88,5 @@ function soar(origin) {
     particles.push(particle);
     if(! Animation.isMove) requestAnimationFrame(Animation.move);
 }
-
 
 export { create, soar };
