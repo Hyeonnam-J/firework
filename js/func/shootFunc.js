@@ -1,4 +1,4 @@
-import { Particle } from '../fragments/particle.js'; 
+import Particle from '../fragments/particle.js'; 
 import { calculateCoordinates, values } from '../util.js';
 import Animation from '../Animation.js';
 import Fragment from '../fragments/fragment.js';

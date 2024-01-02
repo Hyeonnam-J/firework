@@ -1,7 +1,7 @@
 import { ctx } from '../canvas.js';
 import Fragment from './fragment.js';
 
-class Particle {
+export default class Particle {
     constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
         this.milliseconds = seconds * 1000;
         this.startTime = performance.now();
@@ -66,5 +66,3 @@ class Particle {
         ctx.restore();
     }
 }
-
-export { Particle };
