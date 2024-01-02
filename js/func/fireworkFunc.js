@@ -1,7 +1,7 @@
 import { Particle } from '../fragments/particle.js'; 
 import { viewWidth, viewHeight } from '../canvas.js';
 import Animation from '../Animation.js';
-import { fragments, fragmentActArr, fragmentActType } from '../fragments/fragment.js'; 
+import { fragmentArr, fragmentActArr, fragmentActType } from '../fragments/fragment.js'; 
 import { values } from '../util.js';
 import { explode } from './explodeFunc.js';
 import { shoot } from './shootFunc.js';
@@ -97,7 +97,7 @@ function soar(origin) {
         }
     ) // new Particle()
 
-    fragments.push(particle);
+    fragmentArr.push(particle);
     if(! Animation.isMove) requestAnimationFrame(Animation.move);
 }
 

@@ -1,7 +1,7 @@
 import { Particle } from '../fragments/particle.js'; 
 import { calculateCoordinates, values } from '../util.js';
 import Animation from '../Animation.js';
-import { fragments, fragmentActType } from '../fragments/fragment.js'; 
+import { fragmentArr, fragmentActType } from '../fragments/fragment.js'; 
 
 function shoot(fragment, afterEffect){
     generateShootingFragments(fragment, -30, 30, 30, 1, afterEffect);
@@ -49,11 +49,11 @@ function generateShootingFragments(fragment, startAngle, endAngle, angleGap, dis
                     //         values.afterImageSize,
                     //         values.afterImageSize,
                     //         values.afterImageDuration(),
-                    //         fragmentsColor,
+                    //         fragmentColor,
                     //         180,
                     //         () => {}
                     //     )
-                    //     fragments.push(particle);
+                    //     fragmentArr.push(particle);
                     //     if(! Animation.isMove) requestAnimationFrame(Animation.move);
                     //     break;
 
@@ -63,7 +63,7 @@ function generateShootingFragments(fragment, startAngle, endAngle, angleGap, dis
             }   // parent new Particle's callback
         );  // parent new Particle
         
-        fragments.push(particle);
+        fragmentArr.push(particle);
         if(! Animation.isMove) requestAnimationFrame(Animation.move);
     }   // for
 }

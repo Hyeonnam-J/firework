@@ -1,7 +1,7 @@
 import { Particle } from '../fragments/particle.js'; 
 import { calculateCoordinates, values } from '../util.js';
 import Animation from '../Animation.js';
-import { fragments, fragmentActType } from '../fragments/fragment.js'; 
+import { fragmentArr, fragmentActType } from '../fragments/fragment.js'; 
 
 function explode(fragment, afterEffect) {
     generateExplosionFragments(fragment, 1, 15, 0.9, afterEffect);
@@ -68,7 +68,7 @@ function generateExplosionFragments(fragment, startAngle, angleGap, distancePerc
                             180,
                             () => {}
                         )
-                        fragments.push(particle);
+                        fragmentArr.push(particle);
                         if(! Animation.isMove) requestAnimationFrame(Animation.move);
                         break;
 
@@ -78,7 +78,7 @@ function generateExplosionFragments(fragment, startAngle, angleGap, distancePerc
             }   // parent new Particle's callback
         );  // parent new Particle
         
-        fragments.push(particle);
+        fragmentArr.push(particle);
         if(! Animation.isMove) requestAnimationFrame(Animation.move);
     }   // for
 }

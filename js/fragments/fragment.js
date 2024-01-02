@@ -1,4 +1,4 @@
-const fragments = [];
+const fragmentArr = [];
 
 const fragmentActArr = [
     'explode', 
@@ -14,4 +14,4 @@ const fragmentActType = {
     shoot: 'shoot',
 }
 
-export { fragments, fragmentActArr, fragmentActType };
+export { fragmentArr, fragmentActArr, fragmentActType };
