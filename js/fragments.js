@@ -1,8 +1,11 @@
-const fragmentsArr = ['explode', 'explodeWithAfterImage'];
+const fragmentsArr = [
+    'explode', 
+    'explodeWithFallingDust',
+];
 
 const fragmentsType = {
     explode: 'explode',
-    explodeWithAfterImage: 'explodeWithAfterImage',
+    explodeWithFallingDust: 'explodeWithFallingDust',
 }
 
 export { fragmentsArr, fragmentsType };

@@ -70,15 +70,15 @@ function soar(origin) {
 
             switch (extractFragmentsType) {
                 case fragmentsType.explode:
-                    explode(fragments, false);
+                    explode(fragments, fragmentsType.explode);
                     break;
 
-                case fragmentsType.explodeWithAfterImage:
-                    explode(fragments, true);
+                case fragmentsType.explodeWithFallingDust:
+                    explode(fragments, fragmentsType.explodeWithFallingDust);
                     break;
 
                 default:
-                    explode(fragments, false);
+                    explode(fragments, fragmentsType.explode);
                     break;
             }
         }

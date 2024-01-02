@@ -24,6 +24,7 @@ const values = {
     fragmentsDuration: () => Math.random() * 2 + 3,
     fragmentsDistance: () => ( Math.random() * 100 ) + 200,
 
+    afterImageSize: 4,
     afterImageDuration: () => Math.random() * 2 + 1,
 }
 
