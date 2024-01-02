@@ -1,17 +1,19 @@
-const fragmentArr = [];
+export default class Fragment {
+    static fragmentArr = [];
 
-const fragmentsActArr = [
-    'explode', 
-    'explodeWithFallingParticles',
+    static fragmentsActArr = [
+        'explode', 
+        'explodeWithFallingParticles',
 
-    'shoot',
-];
+        'shoot',
+    ];
 
-const fragmentsActType = {
-    explode: 'explode',
-    explodeWithFallingParticles: 'explodeWithFallingParticles',
-    
-    shoot: 'shoot',
+    static fragmentsActType = {
+        explode: 'explode',
+        explodeWithFallingParticles: 'explodeWithFallingParticles',
+        
+        shoot: 'shoot',
+    }
 }
 
-export { fragmentArr, fragmentsActArr, fragmentsActType };
+

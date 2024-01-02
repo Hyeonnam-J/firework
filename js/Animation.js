@@ -1,5 +1,5 @@
 import { ctx } from './canvas.js';
-import { fragmentArr } from './fragments/fragment.js';
+import Fragment from './fragments/fragment.js';
 
 export default class Animation {
     static isMove = false;
@@ -7,12 +7,12 @@ export default class Animation {
     static move() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-        fragmentArr.forEach(fragment => {
+        Fragment.fragmentArr.forEach(fragment => {
             fragment.update();
             fragment.draw();
         });
     
-        const anyFragmentsInProgress = fragmentArr.some(fragment => fragment.progress < 1);
+        const anyFragmentsInProgress = Fragment.fragmentArr.some(fragment => fragment.progress < 1);
     
         if (anyFragmentsInProgress) {
             Animation.isMove = true;
@@ -21,6 +21,6 @@ export default class Animation {
             Animation.isMove = false;
         }
     
-        console.log('isAnimating... particles length: ' + fragmentArr.length);
+        console.log('isAnimating... particles length: ' + Fragment.fragmentArr.length);
     }
 }

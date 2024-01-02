@@ -1,5 +1,5 @@
 import { ctx } from '../canvas.js';
-import { fragmentArr } from './fragment.js';
+import Fragment from './fragment.js';
 
 class Particle {
     constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
@@ -37,8 +37,8 @@ class Particle {
             this.onComplete();
 
             // 현재 Particle 객체를 fragmentArr 배열에서 찾아서 삭제
-            const index = fragmentArr.indexOf(this);
-            fragmentArr.splice(index, 1);
+            const index = Fragment.fragmentArr.indexOf(this);
+            Fragment.fragmentArr.splice(index, 1);
 
             return;
         }
