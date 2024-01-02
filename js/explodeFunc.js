@@ -55,7 +55,7 @@ function generateExplosionFragments(fragments, startAngle, angleGap, distancePer
                     case fragmentsType.explode:
                         break;
                     
-                    case fragmentsType.explodeWithFallingDust:
+                    case fragmentsType.explodeWithFallingFragments:
                         const particle = new Particle(
                             fragmentsEndPoint.x,
                             fragmentsEndPoint.y,

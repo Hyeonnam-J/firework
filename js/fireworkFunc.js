@@ -82,8 +82,8 @@ function soar(origin) {
                     explode(fragments, fragmentsType.explode);
                     break;
 
-                case fragmentsType.explodeWithFallingDust:
-                    explode(fragments, fragmentsType.explodeWithFallingDust);
+                case fragmentsType.explodeWithFallingFragments:
+                    explode(fragments, fragmentsType.explodeWithFallingFragments);
                     break;
 
                 case fragmentsType.shoot:

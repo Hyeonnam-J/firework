@@ -1,13 +1,13 @@
 const fragmentsArr = [
     'explode', 
-    'explodeWithFallingDust',
+    'explodeWithFallingFragments',
 
     'shoot',
 ];
 
 const fragmentsType = {
     explode: 'explode',
-    explodeWithFallingDust: 'explodeWithFallingDust',
+    explodeWithFallingFragments: 'explodeWithFallingFragments',
     
     shoot: 'shoot',
 }
