@@ -25,7 +25,7 @@ const values = {
     fragmentsHeight: 20,
     fragmentsDuration: () => Math.random() * 2 + 3,
     fragmentsDefaultDistance: () => ( Math.random() * 100 ) + 200,
-    fragmentsLongDistance: () => ( Math.random() * 200 ) + 400,
+    fragmentsLongDistance: () => ( Math.random() * 200 ) + 300,
 
     fallingParticlesSize: 6,
     fallingParticlesDuration: () => Math.random() * 2 + 1,

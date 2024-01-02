@@ -4,8 +4,10 @@ import Animation from '../Animation.js';
 import Fragment from '../fragments/fragment.js';
 
 function shoot(origin, afterEffect){
-    generateShootingFragments(origin, -30, 30, 30, 1, afterEffect);
-    generateShootingFragments(origin, -45, 45, 30, 0.7, afterEffect);
+    generateShootingFragments(origin, -52.5, 52.5, 15, 1, afterEffect);
+    generateShootingFragments(origin, -45, 45, 15, 0.85, afterEffect);
+    generateShootingFragments(origin, -37.5, 37.5, 15, 0.7, afterEffect);
+    generateShootingFragments(origin, -30, 30, 15, 0.55, afterEffect);
 }
 
 function generateShootingFragments(origin, startAngle, endAngle, angleGap, distancePercentage, afterEffect){
