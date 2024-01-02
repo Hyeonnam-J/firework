@@ -1,51 +1,51 @@
-import { Particle, particles } from '../fragments/particle.js'; 
+import { Particle } from '../fragments/particle.js'; 
 import { calculateCoordinates, values } from '../util.js';
 import Animation from '../Animation.js';
-import { fragmentsType } from '../fragments/fragments.js'; 
+import { fragments, fragmentActType } from '../fragments/fragment.js'; 
 
-function shoot(fragments, afterEffect){
-    generateShootingFragments(fragments, -30, 30, 30, 1, afterEffect);
-    generateShootingFragments(fragments, -45, 45, 30, 0.7, afterEffect);
+function shoot(fragment, afterEffect){
+    generateShootingFragments(fragment, -30, 30, 30, 1, afterEffect);
+    generateShootingFragments(fragment, -45, 45, 30, 0.7, afterEffect);
 }
 
-function generateShootingFragments(fragments, startAngle, endAngle, angleGap, distancePercentage, afterEffect){
-    const fragmentsPoint_X = fragments.fragmentsPoint_X;
-    const fragmentsPoint_Y = fragments.fragmentsPoint_Y;
-    const fragmentsColor = fragments.fragmentsColor;
-    const fragmentsWidth = values.fragmentsWidth;
-    const fragmentsHeight = values.fragmentsHeight;
-    const fragmentsDuration = values.fragmentsDuration();
-    const fragmentsDistance = values.fragmentsLongDistance();
+function generateShootingFragments(fragment, startAngle, endAngle, angleGap, distancePercentage, afterEffect){
+    const fragmentPoint_X = fragment.fragmentPoint_X;
+    const fragmentPoint_Y = fragment.fragmentPoint_Y;
+    const fragmentColor = fragment.fragmentColor;
+    const fragmentWidth = values.fragmentWidth;
+    const fragmentHeight = values.fragmentHeight;
+    const fragmentDuration = values.fragmentDuration();
+    const fragmentDistance = values.fragmentLongDistance();
 
     for(let angle = startAngle; angle <= endAngle; angle += angleGap){
-        const fragmentsEndPoint = calculateCoordinates(
-            fragmentsPoint_X,
-            fragmentsPoint_Y,
-            fragmentsDistance * distancePercentage,
+        const fragmentEndPoint = calculateCoordinates(
+            fragmentPoint_X,
+            fragmentPoint_Y,
+            fragmentDistance * distancePercentage,
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 
         const particle = new Particle(
-            fragmentsPoint_X,
-            fragmentsPoint_Y,
-            fragmentsEndPoint.x,
-            fragmentsEndPoint.y,
-            fragmentsWidth,
-            fragmentsHeight,
-            fragmentsDuration,
-            fragmentsColor,
+            fragmentPoint_X,
+            fragmentPoint_Y,
+            fragmentEndPoint.x,
+            fragmentEndPoint.y,
+            fragmentWidth,
+            fragmentHeight,
+            fragmentDuration,
+            fragmentColor,
             angle,
             () => {
                 switch(afterEffect){
-                    case fragmentsType.shoot:
+                    case fragmentActType.shoot:
                         break;
                     
-                    // case fragmentsType.explodeWithFallingDust:
+                    // case fragmentActType.explodeWithFallingDust:
                     //     const particle = new Particle(
-                    //         fragmentsEndPoint.x,
-                    //         fragmentsEndPoint.y,
-                    //         fragmentsEndPoint.x,
-                    //         fragmentsEndPoint.y + 10,
+                    //         fragmentEndPoint.x,
+                    //         fragmentEndPoint.y,
+                    //         fragmentEndPoint.x,
+                    //         fragmentEndPoint.y + 10,
                     //         values.afterImageSize,
                     //         values.afterImageSize,
                     //         values.afterImageDuration(),
@@ -53,7 +53,7 @@ function generateShootingFragments(fragments, startAngle, endAngle, angleGap, di
                     //         180,
                     //         () => {}
                     //     )
-                    //     particles.push(particle);
+                    //     fragments.push(particle);
                     //     if(! Animation.isMove) requestAnimationFrame(Animation.move);
                     //     break;
 
@@ -63,7 +63,7 @@ function generateShootingFragments(fragments, startAngle, endAngle, angleGap, di
             }   // parent new Particle's callback
         );  // parent new Particle
         
-        particles.push(particle);
+        fragments.push(particle);
         if(! Animation.isMove) requestAnimationFrame(Animation.move);
     }   // for
 }

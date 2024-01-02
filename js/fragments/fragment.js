@@ -1,15 +1,17 @@
-const fragmentsArr = [
+const fragments = [];
+
+const fragmentActArr = [
     'explode', 
     'explodeWithFallingFragments',
 
     'shoot',
 ];
 
-const fragmentsType = {
+const fragmentActType = {
     explode: 'explode',
     explodeWithFallingFragments: 'explodeWithFallingFragments',
     
     shoot: 'shoot',
 }
 
-export { fragmentsArr, fragmentsType };
+export { fragments, fragmentActArr, fragmentActType };

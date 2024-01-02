@@ -1,6 +1,5 @@
 import { ctx } from '../canvas.js';
-
-const particles = [];
+import { fragments } from './fragment.js';
 
 class Particle {
     constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
@@ -37,9 +36,9 @@ class Particle {
         if (this.progress >= 1) {
             this.onComplete();
 
-            // 현재 Particle 객체를 particles 배열에서 찾아서 삭제
-            const index = particles.indexOf(this);
-            particles.splice(index, 1);
+            // 현재 Particle 객체를 fragments 배열에서 찾아서 삭제
+            const index = fragments.indexOf(this);
+            fragments.splice(index, 1);
 
             return;
         }
@@ -68,4 +67,4 @@ class Particle {
     }
 }
 
-export { Particle, particles };
+export { Particle };

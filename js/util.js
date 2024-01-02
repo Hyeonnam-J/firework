@@ -21,11 +21,11 @@ const values = {
     originShortEndPoint: (viewHeight) => ( (Math.random() * 0.2) + 0.5 ) * viewHeight,
     originDefaultEndPoint: (viewHeight) => ( (Math.random() * 0.4) + 0.2 ) * viewHeight,
 
-    fragmentsWidth: 2,
-    fragmentsHeight: 20,
-    fragmentsDuration: () => Math.random() * 2 + 3,
-    fragmentsDefaultDistance: () => ( Math.random() * 100 ) + 200,
-    fragmentsLongDistance: () => ( Math.random() * 200 ) + 300,
+    fragmentWidth: 2,
+    fragmentHeight: 20,
+    fragmentDuration: () => Math.random() * 2 + 3,
+    fragmentDefaultDistance: () => ( Math.random() * 100 ) + 200,
+    fragmentLongDistance: () => ( Math.random() * 200 ) + 300,
 
     afterImageSize: 4,
     afterImageDuration: () => Math.random() * 2 + 1,

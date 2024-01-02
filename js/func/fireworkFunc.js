@@ -1,7 +1,7 @@
-import { Particle, particles } from '../fragments/particle.js'; 
+import { Particle } from '../fragments/particle.js'; 
 import { viewWidth, viewHeight } from '../canvas.js';
 import Animation from '../Animation.js';
-import { fragmentsArr, fragmentsType } from '../fragments/fragments.js'; 
+import { fragments, fragmentActArr, fragmentActType } from '../fragments/fragment.js'; 
 import { values } from '../util.js';
 import { explode } from './explodeFunc.js';
 import { shoot } from './shootFunc.js';
@@ -20,18 +20,18 @@ function create() {
     // 불꽃 x 스타팅 포인트
     const originPoint_X = values.originPoint_X(viewWidth);
 
-    // fragmentsType이 create 시 결정되어야 그 폭죽에 맞는 속도, 시간을 설정할 수 있다.
-    const fragmentsIndex = Math.floor(Math.random() * fragmentsArr.length);
-    const extractedFragmentsType = fragmentsArr[fragmentsIndex];
-    // const extractedFragmentsType = 'shoot';
+    // fragmentActType이 create 시 결정되어야 그 폭죽에 맞는 속도, 시간을 설정할 수 있다.
+    const fragmentsIndex = Math.floor(Math.random() * fragmentActArr.length);
+    const extractedFragmentActType = fragmentActArr[fragmentsIndex];
+    // const extractedFragmentActType = 'shoot';
 
     // 불꽃 y 엔드 포인트
-    let endPoint = extractedFragmentsType === fragmentsType.shoot 
+    let endPoint = extractedFragmentActType === fragmentActType.shoot 
         ? values.originShortEndPoint(viewHeight) 
         : values.originDefaultEndPoint(viewHeight);
 
     // 불꽃 속도
-    let originDuration = extractedFragmentsType === fragmentsType.shoot
+    let originDuration = extractedFragmentActType === fragmentActType.shoot
         ? values.originShortDuration()
         : values.originDefaultDuration();
 
@@ -43,7 +43,7 @@ function create() {
         originPoint_Y: originPoint_Y,
         endPoint: endPoint,
         originDuration: originDuration,
-        extractedFragmentsType: extractedFragmentsType,
+        extractedFragmentActType: extractedFragmentActType,
     }
 
     return origin;
@@ -57,7 +57,7 @@ function soar(origin) {
     const originPoint_Y = origin.originPoint_Y;
     const endPoint = origin.endPoint;
     const originDuration = origin.originDuration;
-    const extractedFragmentsType = origin.extractedFragmentsType;
+    const extractedFragmentActType = origin.extractedFragmentActType;
 
     const particle = new Particle(
         originPoint_X,
@@ -71,33 +71,33 @@ function soar(origin) {
         0,
         () => {
             // callback
-            const fragments = {
-                fragmentsPoint_X: originPoint_X,
-                fragmentsPoint_Y: endPoint,
-                fragmentsColor: originColor,
+            const fragment = {
+                fragmentPoint_X: originPoint_X,
+                fragmentPoint_Y: endPoint,
+                fragmentColor: originColor,
             }
 
-            switch (extractedFragmentsType) {
-                case fragmentsType.explode:
-                    explode(fragments, fragmentsType.explode);
+            switch (extractedFragmentActType) {
+                case fragmentActType.explode:
+                    explode(fragment, fragmentActType.explode);
                     break;
 
-                case fragmentsType.explodeWithFallingFragments:
-                    explode(fragments, fragmentsType.explodeWithFallingFragments);
+                case fragmentActType.explodeWithFallingFragments:
+                    explode(fragment, fragmentActType.explodeWithFallingFragments);
                     break;
 
-                case fragmentsType.shoot:
-                    shoot(fragments, fragmentsType.shoot);
+                case fragmentActType.shoot:
+                    shoot(fragment, fragmentActType.shoot);
                     break;
 
                 default:
-                    explode(fragments, fragmentsType.explode);
+                    explode(fragment, fragmentActType.explode);
                     break;
             }
         }
     ) // new Particle()
 
-    particles.push(particle);
+    fragments.push(particle);
     if(! Animation.isMove) requestAnimationFrame(Animation.move);
 }
 

@@ -1,5 +1,5 @@
 import { ctx } from './canvas.js';
-import { particles } from './fragments/particle.js';
+import { fragments } from './fragments/fragment.js';
 
 export default class Animation {
     static isMove = false;
@@ -7,20 +7,20 @@ export default class Animation {
     static move() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+        fragments.forEach(fragment => {
+            fragment.update();
+            fragment.draw();
         });
     
-        const anyParticleInProgress = particles.some(particle => particle.progress < 1);
+        const anyFragmentsInProgress = fragments.some(fragment => fragment.progress < 1);
     
-        if (anyParticleInProgress) {
+        if (anyFragmentsInProgress) {
             Animation.isMove = true;
             requestAnimationFrame(Animation.move);
         }else{
             Animation.isMove = false;
         }
     
-        console.log('isAnimating... particles length: ' + particles.length);
+        console.log('isAnimating... particles length: ' + fragments.length);
     }
 }
