@@ -3,33 +3,23 @@ import { calculateCoordinates, values } from './util.js';
 import { move } from './animate.js';
 
 function explode(fragments) {
-    generateExplosionFragments(fragments, 0, 24, 1);
-    generateExplosionFragments(fragments, 2, 23, 0.98);
-    generateExplosionFragments(fragments, 3, 25, 0.95);
-
-    generateExplosionFragments(fragments, 7, 13, 0.9);
-    generateExplosionFragments(fragments, 10, 16, 0.86);
-    generateExplosionFragments(fragments, 11, 18, 0.87);
-
-    generateExplosionFragments(fragments, 0, 20, 0.8);
-    generateExplosionFragments(fragments, 6, 21, 0.89);
-    generateExplosionFragments(fragments, 5, 24, 0.87);
-
-    generateExplosionFragments(fragments, 1, 24, 0.7);
-    generateExplosionFragments(fragments, 9, 26, 0.69);
-    generateExplosionFragments(fragments, 8, 29, 0.67);
-
-    generateExplosionFragments(fragments, 2, 23, 0.6);
-    generateExplosionFragments(fragments, 8, 21, 0.68);
-    generateExplosionFragments(fragments, 3, 22, 0.65);
-
-    generateExplosionFragments(fragments, 4, 30, 0.5);
-    generateExplosionFragments(fragments, 7, 31, 0.44);
-    generateExplosionFragments(fragments, 5, 32, 0.45);
-
-    generateExplosionFragments(fragments, 3, 36, 0.4);
-    generateExplosionFragments(fragments, 1, 38, 0.39);
-    generateExplosionFragments(fragments, 9, 37, 0.38);
+    generateExplosionFragments(fragments, 1, 15, 0.99);
+    generateExplosionFragments(fragments, 2, 15, 0.99);
+    generateExplosionFragments(fragments, 3, 15, 0.99);
+    generateExplosionFragments(fragments, 2, 23, 0.98); // x1.5
+    generateExplosionFragments(fragments, 3, 17, 0.97);
+    generateExplosionFragments(fragments, 4, 35, 0.96); // x2
+    generateExplosionFragments(fragments, 5, 23, 0.95);
+    generateExplosionFragments(fragments, 6, 70, 0.93); // x3
+    generateExplosionFragments(fragments, 7, 24, 0.91);
+    generateExplosionFragments(fragments, 8, 74, 0.85); // x3
+    generateExplosionFragments(fragments, 9, 25, 0.8);
+    generateExplosionFragments(fragments, 0, 77, 0.75); // x3
+    generateExplosionFragments(fragments, 0, 27, 0.7);
+    generateExplosionFragments(fragments, 1, 31, 0.6);
+    generateExplosionFragments(fragments, 2, 34, 0.5);
+    generateExplosionFragments(fragments, 3, 41, 0.4);
+    generateExplosionFragments(fragments, 4, 43, 0.3);
 
     requestAnimationFrame(move);
 }
