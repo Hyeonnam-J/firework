@@ -30,7 +30,7 @@ export default class Trace {
         }
 
         ctx.fillStyle = this.objectColor;
-        ctx.globalAlpha = 0.3;
+        ctx.globalAlpha = 0.5;
         ctx.fillRect(this.x, this.y, this.objectWidth, this.objectHeight);
     }
 }

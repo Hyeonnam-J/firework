@@ -6,6 +6,7 @@ export default class Fragment {
         'explodeWithFallingParticles',
 
         'shoot',
+        'shootWithFallingParticles',
     ];
 
     static fragmentsActType = {
@@ -13,6 +14,7 @@ export default class Fragment {
         explodeWithFallingParticles: 'explodeWithFallingParticles',
         
         shoot: 'shoot',
+        shootWithFallingParticles: 'shootWithFallingParticles',
     }
 }
 

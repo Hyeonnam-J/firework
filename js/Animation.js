@@ -21,6 +21,6 @@ export default class Animation {
             Animation.isMove = false;
         }
     
-        console.log('isAnimating... particles length: ' + Fragment.fragmentArr.length);
+        // console.log('isAnimating... particles length: ' + Fragment.fragmentArr.length);
     }
 }

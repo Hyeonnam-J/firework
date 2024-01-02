@@ -41,6 +41,23 @@ function generateShootingFragments(origin, startAngle, endAngle, angleGap, dista
                 switch(afterEffect){
                     case Fragment.fragmentsActType.shoot:
                         break;
+
+                    case Fragment.fragmentsActType.shootWithFallingParticles:
+                        const particle = new Particle(
+                            fragmentEndPoint.x,
+                            fragmentEndPoint.y,
+                            fragmentEndPoint.x,
+                            fragmentEndPoint.y + values.heavyGravity,
+                            values.fallingParticlesSize,
+                            values.fallingParticlesSize,
+                            values.fallingParticlesDuration(),
+                            fragmentsColor,
+                            180,
+                            () => {}
+                        )
+                        Fragment.fragmentArr.push(particle);
+                        if(! Animation.isMove) requestAnimationFrame(Animation.move);
+                        break;
                     
                     default:
                         break;

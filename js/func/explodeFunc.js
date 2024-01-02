@@ -70,7 +70,7 @@ function generateExplosionFragments(origin, startAngle, angleGap, distancePercen
                             fragmentEndPoint.x,
                             fragmentEndPoint.y,
                             fragmentEndPoint.x,
-                            fragmentEndPoint.y + 10,
+                            fragmentEndPoint.y + values.lightGravity,
                             values.fallingParticlesSize,
                             values.fallingParticlesSize,
                             values.fallingParticlesDuration(),

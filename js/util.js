@@ -27,11 +27,14 @@ const values = {
     fragmentsDefaultDistance: () => ( Math.random() * 100 ) + 200,
     fragmentsLongDistance: () => ( Math.random() * 200 ) + 300,
 
-    fallingParticlesSize: 6,
+    fallingParticlesSize: 4,
     fallingParticlesDuration: () => Math.random() * 2 + 1,
 
     traceSize: 1,
     traceDuration: 2000,    // ms
+
+    lightGravity: 10,
+    heavyGravity: 30,
 }
 
 const colors = [
