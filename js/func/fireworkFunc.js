@@ -23,7 +23,7 @@ function create() {
     // fragmentsActType이 create 시 결정되어야 그 폭죽에 맞는 속도, 시간을 설정할 수 있다.
     const fragmentsIndex = Math.floor(Math.random() * Fragment.fragmentsActArr.length);
     const extractedfragmentsActType = Fragment.fragmentsActArr[fragmentsIndex];
-    // const extractedFragmentsActType = 'shoot';
+    // const extractedfragmentsActType = 'explodeWithFallingParticles';
 
     // 불꽃 y 엔드 포인트
     let endPoint = extractedfragmentsActType === Fragment.fragmentsActType.shoot 

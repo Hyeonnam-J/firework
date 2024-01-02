@@ -1,5 +1,7 @@
 import { ctx } from '../canvas.js';
+import Trace from './Trace.js';
 import Fragment from './fragment.js';
+import Animation from '../Animation.js';
 
 export default class Particle {
     constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, onComplete) {
@@ -52,10 +54,7 @@ export default class Particle {
         ctx.fillStyle = gradient;
 
         // opacity
-        const startOpacity = 1;  
-        const endOpacity = 0;  
-        const currentOpacity = startOpacity - (startOpacity - endOpacity) * this.progress;
-        ctx.globalAlpha = currentOpacity;
+        ctx.globalAlpha = 1 - this.progress;
 
         ctx.translate(this.currentX + this.objectWidth / 2, this.currentY + this.objectHeight / 2); // 입자 중심으로 이동
         ctx.rotate( (Math.PI * this.angle) / 180 );
@@ -64,5 +63,16 @@ export default class Particle {
         ctx.fillRect(this.currentX, this.currentY, this.objectWidth, this.objectHeight);
 
         ctx.restore();
+
+        // const trace = new Trace(
+        //     this.currentX,
+        //     this.currentY,
+        //     this.objectWidth,
+        //     this.objectHeight,
+        //     this.objectColor
+        // );
+
+        // Fragment.fragmentArr.push(trace);
+        // if(! Animation.isMove) requestAnimationFrame(Animation.move);
     }
 }
