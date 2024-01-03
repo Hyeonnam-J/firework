@@ -1,13 +1,14 @@
-import { create, soar } from './func/fireworkFunc.js';
+import { viewWidth, viewHeight } from './canvas.js';
+import Fragment from './fragments/fragment.js';
+import { fire } from './func/fireworkFunc.js';
+import Utils from './Utils.js';
 
-function fire() {
-    let origin = create();
-    soar(origin);
-}
-
+let count = 0;
 for (let i = 0; i < 2; i++) {
     setTimeout(() => {
-        fire();
+        if(count == 0) fire(viewWidth * 0.5, viewHeight * 0.5, 2000, Utils.colors.aqua, Fragment.fragmentsActType.explodeWithFallingParticles);
+        else fire(viewWidth * 0.5, viewHeight * 0.5, 2000, Utils.colors.aqua, Fragment.fragmentsActType.shootWithFallingParticles);
+        count++;
     }, i * 300);
 }
 

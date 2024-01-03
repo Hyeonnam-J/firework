@@ -1,4 +1,4 @@
-import { ctx } from './canvas.js';
+import { canvas, ctx } from './canvas.js';
 import Fragment from './fragments/fragment.js';
 
 export default class Animation {

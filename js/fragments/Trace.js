@@ -1,5 +1,5 @@
 import { ctx } from '../canvas.js';
-import { values } from '../util.js';
+import Utils from '../Utils.js';
 import Fragment from './fragment.js';
 
 export default class Trace {
@@ -16,7 +16,7 @@ export default class Trace {
     update() {
         const currentTime = performance.now();
         const elapsed = currentTime - this.startTime;
-        this.progress = Math.min(elapsed / values.traceDuration, 1);
+        this.progress = Math.min(elapsed / Utils.values.traceDuration, 1);
     }
 
     draw() {

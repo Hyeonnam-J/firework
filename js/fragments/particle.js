@@ -2,7 +2,7 @@ import { ctx } from '../canvas.js';
 import Trace from './Trace.js';
 import Fragment from './fragment.js';
 import Animation from '../Animation.js';
-import { values } from '../util.js';
+import Utils from '../Utils.js';
 
 export default class Particle {
     constructor(startX, startY, endX, endY, objectWidth, objectHeight, milliseconds, objectColor, angle, 
@@ -79,8 +79,8 @@ export default class Particle {
                 const trace = new Trace(
                     this.currentX,
                     this.currentY,
-                    values.traceSize,
-                    values.traceSize,
+                    Utils.values.traceSize,
+                    Utils.values.traceSize,
                     this.objectColor
                 );
         
