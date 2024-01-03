@@ -1,4 +1,4 @@
-import Particle from '../fragments/Particle.js'; 
+import Particle from '../fragments/Particle.js';
 import { viewWidth, viewHeight } from '../canvas.js';
 import Animation from '../Animation.js';
 import { values } from '../util.js';
@@ -27,7 +27,7 @@ function create() {
 
     // 불꽃 y 엔드 포인트
     let endPoint = extractedfragmentsActType === Fragment.fragmentsActType.shoot || Fragment.fragmentsActType.shootWithFallingParticles
-        ? values.originShortEndPoint(viewHeight) 
+        ? values.originShortEndPoint(viewHeight)
         : values.originDefaultEndPoint(viewHeight);
 
     // 불꽃 속도
@@ -98,7 +98,7 @@ function soar(origin) {
     ) // new Particle()
 
     Fragment.fragmentArr.push(particle);
-    if(! Animation.isMove) requestAnimationFrame(Animation.move);
+    if (!Animation.isMove) requestAnimationFrame(Animation.move);
 }
 
 export { create, soar };

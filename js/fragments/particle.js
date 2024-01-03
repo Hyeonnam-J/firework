@@ -5,11 +5,11 @@ import Animation from '../Animation.js';
 import { values } from '../util.js';
 
 export default class Particle {
-    constructor(startX, startY, endX, endY, objectWidth, objectHeight, seconds, objectColor, angle, 
+    constructor(startX, startY, endX, endY, objectWidth, objectHeight, milliseconds, objectColor, angle, 
         onComplete = () => {},
         isTrace = true
     ) {
-        this.milliseconds = seconds * 1000;
+        this.milliseconds = milliseconds;
         this.startTime = performance.now();
 
         this.startX = startX;
