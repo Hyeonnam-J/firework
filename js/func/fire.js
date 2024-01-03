@@ -10,8 +10,8 @@ function fire(color, fragmentsActType, soaring, explosion) {
         soaring.start_y,
         soaring.end_x,
         soaring.end_y,
-        soaring.width,
-        soaring.height,
+        soaring.particlesWidth,
+        soaring.particlesHeight,
         soaring.duration,
         color,
         0,
@@ -34,10 +34,6 @@ function fire(color, fragmentsActType, soaring, explosion) {
 
                 case Fragment.fragmentsActType.erupt:
                     erupt(origin, explosion, Fragment.fragmentsActType.erupt);
-                    break;
-
-                case Fragment.fragmentsActType.eruptWithFallingParticles:
-                    erupt(origin, explosion, Fragment.fragmentsActType.eruptWithFallingParticles);
                     break;
 
                 default:

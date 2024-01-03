@@ -6,7 +6,6 @@ export default class Fragment {
         burstWithFallingParticles: 'burstWithFallingParticles',
         
         erupt: 'erupt',
-        eruptWithFallingParticles: 'eruptWithFallingParticles',
     }
 }
 
