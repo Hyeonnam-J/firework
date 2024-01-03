@@ -1,7 +1,7 @@
 import Particle from '../fragments/Particle.js';
 import Animation from '../Animation.js';
-import { burst } from './burstFunc.js';
-import { shoot } from './shootFunc.js';
+import { burst } from './burst.js';
+import { erupt } from './erupt.js';
 import Fragment from '../fragments/fragment.js';
 
 function fire(color, fragmentsActType, soaring, explosion) {
@@ -32,12 +32,12 @@ function fire(color, fragmentsActType, soaring, explosion) {
                     burst(origin, explosion, Fragment.fragmentsActType.burstWithFallingParticles);
                     break;
 
-                case Fragment.fragmentsActType.shoot:
-                    shoot(origin, explosion, Fragment.fragmentsActType.shoot);
+                case Fragment.fragmentsActType.erupt:
+                    erupt(origin, explosion, Fragment.fragmentsActType.erupt);
                     break;
 
-                case Fragment.fragmentsActType.shootWithFallingParticles:
-                    shoot(origin, explosion, Fragment.fragmentsActType.shootWithFallingParticles);
+                case Fragment.fragmentsActType.eruptWithFallingParticles:
+                    erupt(origin, explosion, Fragment.fragmentsActType.eruptWithFallingParticles);
                     break;
 
                 default:
