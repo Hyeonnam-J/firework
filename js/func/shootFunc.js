@@ -3,24 +3,19 @@ import Utils from '../Utils.js';
 import Animation from '../Animation.js';
 import Fragment from '../fragments/fragment.js';
 
-function shoot(origin, fragmentsActType){
-    generateShootingFragments(origin, -52.5, 52.5, 15, 1, fragmentsActType);
-    generateShootingFragments(origin, -45, 45, 15, 0.85, fragmentsActType);
-    generateShootingFragments(origin, -37.5, 37.5, 15, 0.7, fragmentsActType);
-    generateShootingFragments(origin, -30, 30, 15, 0.55, fragmentsActType);
+function shoot(origin, explosion, fragmentsActType){
+    generateShootingFragments(origin, explosion, -52.5, 52.5, 15, 1, fragmentsActType);
+    generateShootingFragments(origin, explosion, -45, 45, 15, 0.85, fragmentsActType);
+    generateShootingFragments(origin, explosion, -37.5, 37.5, 15, 0.7, fragmentsActType);
+    generateShootingFragments(origin, explosion, -30, 30, 15, 0.55, fragmentsActType);
 }
 
-function generateShootingFragments(origin, startAngle, endAngle, angleGap, distancePercentage, fragmentsActType){
-    const fragmentsWidth = Utils.values.fragmentsWidth;
-    const fragmentsHeight = Utils.values.fragmentsHeight;
-    const fragmentsDuration = Utils.values.fragmentsDuration();
-    const fragmentsDistance = Utils.values.fragmentsLongDistance();
-
+function generateShootingFragments(origin, explosion, startAngle, endAngle, angleGap, distancePercentage, fragmentsActType){
     for(let angle = startAngle; angle <= endAngle; angle += angleGap){
         const fragmentEndPoint = Utils.calculateCoordinates(
             origin.x,
             origin.y,
-            fragmentsDistance * distancePercentage,
+            explosion.distance * distancePercentage,
             angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
         );
 
@@ -29,9 +24,9 @@ function generateShootingFragments(origin, startAngle, endAngle, angleGap, dista
             origin.y,
             fragmentEndPoint.x,
             fragmentEndPoint.y,
-            fragmentsWidth,
-            fragmentsHeight,
-            fragmentsDuration,
+            explosion.width,
+            explosion.height,
+            explosion.duration,
             origin.color,
             angle,
             () => {

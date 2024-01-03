@@ -2,8 +2,8 @@ export default class Fragment {
     static fragmentArr = [];
 
     static fragmentsActType = {
-        explode: 'explode',
-        explodeWithFallingParticles: 'explodeWithFallingParticles',
+        burst: 'burst',
+        burstWithFallingParticles: 'burstWithFallingParticles',
         
         shoot: 'shoot',
         shootWithFallingParticles: 'shootWithFallingParticles',

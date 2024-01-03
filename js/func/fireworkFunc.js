@@ -1,55 +1,47 @@
 import Particle from '../fragments/Particle.js';
-import { viewWidth, viewHeight } from '../canvas.js';
 import Animation from '../Animation.js';
 import Utils from '../Utils.js';
-import { explode } from './explodeFunc.js';
+import { burst } from './burstFunc.js';
 import { shoot } from './shootFunc.js';
 import Fragment from '../fragments/fragment.js';
 
-// y 시작점은 항상 동일
-const start_y = viewHeight;
-
-function fire(start_x, end_y, duration, color, extractedfragmentsActType) {
-    // 위로 솟아오르기만 해야 해서,
-    const end_x = start_x;
-
-    // 불꽃 크기
-    const originWidth = Utils.values.originWidth;
-    const originHeight = Utils.values.originHeight;
-
+function fire(color, fragmentsActType, soaring, explosion) {
     const particle = new Particle(
-        start_x,
-        start_y,
-        end_x,
-        end_y,
-        originWidth,
-        originHeight,
-        duration,
+        soaring.start_x,
+        soaring.start_y,
+        soaring.end_x,
+        soaring.end_y,
+        soaring.width,
+        soaring.height,
+        soaring.duration,
         color,
         0,
         () => {
             // callback
             const origin = {
-                x: start_x,
-                y: end_y,
+                x: soaring.end_x,
+                y: soaring.end_y,
                 color: color,
             }
 
-            switch (extractedfragmentsActType) {
-                case Fragment.fragmentsActType.explode:
-                    explode(origin, Fragment.fragmentsActType.explode);
+            switch (fragmentsActType) {
+                case Fragment.fragmentsActType.burst:
+                    burst(origin, explosion, Fragment.fragmentsActType.burst);
                     break;
 
-                case Fragment.fragmentsActType.explodeWithFallingParticles:
-                    explode(origin, Fragment.fragmentsActType.explodeWithFallingParticles);
+                case Fragment.fragmentsActType.burstWithFallingParticles:
+                    burst(origin, explosion, Fragment.fragmentsActType.burstWithFallingParticles);
                     break;
 
                 case Fragment.fragmentsActType.shoot:
-                    shoot(origin, Fragment.fragmentsActType.shoot);
+                    shoot(origin, explosion, Fragment.fragmentsActType.shoot);
+                    break;
+
+                case Fragment.fragmentsActType.shootWithFallingParticles:
+                    shoot(origin, explosion, Fragment.fragmentsActType.shootWithFallingParticles);
                     break;
 
                 default:
-                    shoot(origin, Fragment.fragmentsActType.shootWithFallingParticles);
                     break;
             }
         }

@@ -13,14 +13,11 @@ export default class Utils {
     }
     
     static values = {
-        originWidth: 2.5,
-        originHeight: 80,
+        soaringWidth: 2.5,
+        soaringHeight: 80,
     
-        fragmentsWidth: 4,
-        fragmentsHeight: 20,
-        fragmentsDuration: () => Math.random() * 2000 + 3000,
-        fragmentsDefaultDistance: () => ( Math.random() * 100 ) + 200,
-        fragmentsLongDistance: () => ( Math.random() * 200 ) + 300,
+        particlesWidth: 4,
+        particlesHeight: 20,
     
         fallingParticlesSize: 4,
         fallingParticlesDuration: () => Math.random() * 2000 + 1000,

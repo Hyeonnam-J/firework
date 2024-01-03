@@ -6,8 +6,49 @@ import Utils from './Utils.js';
 let count = 0;
 for (let i = 0; i < 2; i++) {
     setTimeout(() => {
-        if(count == 0) fire(viewWidth * 0.5, viewHeight * 0.5, 2000, Utils.colors.aqua, Fragment.fragmentsActType.explodeWithFallingParticles);
-        else fire(viewWidth * 0.5, viewHeight * 0.5, 2000, Utils.colors.aqua, Fragment.fragmentsActType.shootWithFallingParticles);
+        if(count == 0){
+            const color = Utils.colors.aqua;
+            const fragmentsActType = Fragment.fragmentsActType.burstWithFallingParticles;
+            const soaring = {
+                start_x: viewWidth * 0.5,
+                end_x: viewWidth * 0.5,
+                start_y: viewHeight,
+                end_y: viewHeight * 0.5,
+
+                width: Utils.values.soaringWidth,
+                height: Utils.values.soaringHeight,
+
+                duration: 2000,
+            };
+            const explosion = {
+                width: Utils.values.particlesWidth,
+                height: Utils.values.particlesHeight,
+                distance: 400,
+                duration: 5000,
+            };
+            fire(color, fragmentsActType, soaring, explosion);
+        }else{
+            const color = Utils.colors.aqua;
+            const fragmentsActType = Fragment.fragmentsActType.shootWithFallingParticles;
+            const soaring = {
+                start_x: viewWidth * 0.5,
+                end_x: viewWidth * 0.5,
+                start_y: viewHeight,
+                end_y: viewHeight * 0.5,
+
+                width: Utils.values.soaringWidth,
+                height: Utils.values.soaringHeight,
+
+                duration: 2000,
+            };
+            const explosion = {
+                width: Utils.values.particlesWidth,
+                height: Utils.values.particlesHeight,
+                distance: 400,
+                duration: 5000,
+            };
+            fire(color, fragmentsActType, soaring, explosion);
+        }
         count++;
     }, i * 300);
 }
