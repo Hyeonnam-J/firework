@@ -1,6 +1,5 @@
 import Particle from '../fragments/Particle.js';
 import Animation from '../Animation.js';
-import Utils from '../Utils.js';
 import { burst } from './burstFunc.js';
 import { shoot } from './shootFunc.js';
 import Fragment from '../fragments/fragment.js';

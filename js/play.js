@@ -21,8 +21,8 @@ for (let i = 0; i < 2; i++) {
                 duration: 2000,
             };
             const explosion = {
-                width: Utils.values.particlesWidth,
-                height: Utils.values.particlesHeight,
+                particlesWidth: Utils.values.particlesWidth,
+                particlesHeight: Utils.values.particlesHeight,
                 distance: 400,
                 duration: 5000,
             };
@@ -42,8 +42,8 @@ for (let i = 0; i < 2; i++) {
                 duration: 2000,
             };
             const explosion = {
-                width: Utils.values.particlesWidth,
-                height: Utils.values.particlesHeight,
+                particlesWidth: Utils.values.particlesWidth,
+                particlesHeight: Utils.values.particlesHeight,
                 distance: 400,
                 duration: 5000,
             };

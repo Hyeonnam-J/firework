@@ -3,14 +3,14 @@ import Utils from '../Utils.js';
 import Fragment from './fragment.js';
 
 export default class Trace {
-    constructor(x, y, objectWidth, objectHeight, objectColor) {
+    constructor(x, y, width, height, color) {
         this.startTime = performance.now();
 
         this.x = x;
         this.y = y;
-        this.objectWidth = objectWidth;
-        this.objectHeight = objectHeight;
-        this.objectColor = objectColor;
+        this.width = width;
+        this.height = height;
+        this.color = color;
     }
 
     update() {
@@ -29,8 +29,8 @@ export default class Trace {
             return;
         }
 
-        ctx.fillStyle = this.objectColor;
+        ctx.fillStyle = this.color;
         ctx.globalAlpha = 0.5;
-        ctx.fillRect(this.x, this.y, this.objectWidth, this.objectHeight);
+        ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }

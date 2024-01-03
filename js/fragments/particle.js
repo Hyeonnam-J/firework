@@ -5,7 +5,7 @@ import Animation from '../Animation.js';
 import Utils from '../Utils.js';
 
 export default class Particle {
-    constructor(startX, startY, endX, endY, objectWidth, objectHeight, milliseconds, objectColor, angle, 
+    constructor(startX, startY, endX, endY, width, height, milliseconds, color, angle, 
         onComplete = () => {},
         isTrace = true
     ) {
@@ -16,9 +16,9 @@ export default class Particle {
         this.startY = startY;
         this.endX = endX;
         this.endY = endY;
-        this.objectWidth = objectWidth;
-        this.objectHeight = objectHeight;
-        this.objectColor = objectColor;
+        this.width = width;
+        this.height = height;
+        this.color = color;
         this.angle = angle;
         this.onComplete = onComplete;
         this.isTrace = isTrace;
@@ -55,19 +55,19 @@ export default class Particle {
         ctx.save();
 
         // 그라디언트 생성
-        const gradient = ctx.createLinearGradient(this.currentX, this.currentY, this.currentX + this.objectWidth, this.currentY + this.objectHeight);
-        gradient.addColorStop(0, this.objectColor); // 시작 부분
+        const gradient = ctx.createLinearGradient(this.currentX, this.currentY, this.currentX + this.width, this.currentY + this.height);
+        gradient.addColorStop(0, this.color); // 시작 부분
         gradient.addColorStop(1, 'transparent');    // 끝 부분 (transparent는 투명 색)
         ctx.fillStyle = gradient;
 
         // opacity
         ctx.globalAlpha = 1 - this.progress;
 
-        ctx.translate(this.currentX + this.objectWidth / 2, this.currentY + this.objectHeight / 2); // 입자 중심으로 이동
+        ctx.translate(this.currentX + this.width / 2, this.currentY + this.height / 2); // 입자 중심으로 이동
         ctx.rotate( (Math.PI * this.angle) / 180 );
-        ctx.translate(-(this.currentX + this.objectWidth / 2), -(this.currentY + this.objectHeight / 2)); // 원래 위치로 이동
+        ctx.translate(-(this.currentX + this.width / 2), -(this.currentY + this.height / 2)); // 원래 위치로 이동
         
-        ctx.fillRect(this.currentX, this.currentY, this.objectWidth, this.objectHeight);
+        ctx.fillRect(this.currentX, this.currentY, this.width, this.height);
 
         ctx.restore();
 
@@ -81,7 +81,7 @@ export default class Particle {
                     this.currentY,
                     Utils.values.traceSize,
                     Utils.values.traceSize,
-                    this.objectColor
+                    this.color
                 );
         
                 Fragment.fragmentArr.push(trace);

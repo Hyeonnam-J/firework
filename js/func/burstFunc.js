@@ -44,17 +44,17 @@ function generateBurstFragments(origin, explosion, startAngle, angleGap, distanc
             origin.y,
             fragmentEndPoint.x,
             fragmentEndPoint.y,
-            explosion.width,
-            explosion.height,
+            explosion.particlesWidth,
+            explosion.particlesHeight,
             explosion.duration,
             origin.color,
             angle,
             () => {
                 switch(fragmentsActType){
-                    case Fragment.fragmentsActType.explode:
+                    case Fragment.fragmentsActType.burst:
                         break;
                     
-                    case Fragment.fragmentsActType.explodeWithFallingParticles:
+                    case Fragment.fragmentsActType.burstWithFallingParticles:
                         const particle = new Particle(
                             fragmentEndPoint.x,
                             fragmentEndPoint.y,
