@@ -2,7 +2,7 @@ import Particle from '../fragments/Particle.js';
 import Animation from '../Animation.js';
 import { burst } from './burst.js';
 import { erupt } from './erupt.js';
-import Fragment from '../fragments/fragment.js';
+import Fragment from '../fragments/Fragment.js';
 
 function fire(color, fragmentsActType, soaring, explosion) {
     const soaringParticlesWidth = 2.5;
@@ -33,8 +33,8 @@ function fire(color, fragmentsActType, soaring, explosion) {
                     burst(origin, explosion, Fragment.fragmentsActType.burst);
                     break;
 
-                case Fragment.fragmentsActType.burstWithFallingParticles:
-                    burst(origin, explosion, Fragment.fragmentsActType.burstWithFallingParticles);
+                case Fragment.fragmentsActType.burstWithTwinkle:
+                    burst(origin, explosion, Fragment.fragmentsActType.burstWithTwinkle);
                     break;
 
                 case Fragment.fragmentsActType.erupt:

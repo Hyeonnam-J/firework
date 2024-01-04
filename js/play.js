@@ -1,35 +1,35 @@
 import { viewWidth, viewHeight } from './canvas.js';
-import Fragment from './fragments/fragment.js';
+import Fragment from './fragments/Fragment.js';
 import { fire } from './func/fire.js';
 import Utils from './Utils.js';
 
-// const color = Utils.colors.white;
-// const fragmentsActType = Fragment.fragmentsActType.burst;
-// const soaring = {
-//     start_x: viewWidth * 0.5,
-//     end_x: viewWidth * 0.5,
-//     start_y: viewHeight,
-//     end_y: viewHeight * 0.5,
-//     duration: 2000,
-// };
-// const explosion = {
-//     distance: 300,
-//     duration: 5000,
-// };
-
 const color = Utils.colors.white;
-const fragmentsActType = Fragment.fragmentsActType.erupt;
+const fragmentsActType = Fragment.fragmentsActType.burst;
 const soaring = {
     start_x: viewWidth * 0.5,
     end_x: viewWidth * 0.5,
     start_y: viewHeight,
-    end_y: viewHeight * 0.7,
+    end_y: viewHeight * 0.5,
     duration: 2000,
 };
 const explosion = {
-    distance: 1000,
+    distance: 300,
     duration: 5000,
 };
+
+// const color = Utils.colors.white;
+// const fragmentsActType = Fragment.fragmentsActType.erupt;
+// const soaring = {
+//     start_x: viewWidth * 0.5,
+//     end_x: viewWidth * 0.5,
+//     start_y: viewHeight,
+//     end_y: viewHeight * 0.7,
+//     duration: 2000,
+// };
+// const explosion = {
+//     distance: 500,
+//     duration: 5000,
+// };
 fire(color, fragmentsActType, soaring, explosion);
 
 // let count = 0;

@@ -1,7 +1,7 @@
 import Particle from '../fragments/Particle.js'; 
 import Utils from '../Utils.js';
 import Animation from '../Animation.js';
-import Fragment from '../fragments/fragment.js';
+import Fragment from '../fragments/Fragment.js';
 
 function erupt(origin, explosion, fragmentsActType){
     const particlesSize = 4;

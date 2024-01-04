@@ -1,7 +1,7 @@
 import Particle from '../fragments/Particle.js'; 
 import Utils from '../Utils.js';
 import Animation from '../Animation.js';
-import Fragment from '../fragments/fragment.js';
+import Fragment from '../fragments/Fragment.js';
 
 function burst(origin, explosion, fragmentsActType) {
     generateBurstFragments(origin, explosion, 0, 16, 0.99, fragmentsActType);
@@ -59,19 +59,20 @@ function generateBurstFragments(origin, explosion, startAngle, angleGap, distanc
                     case Fragment.fragmentsActType.burst:
                         break;
                     
-                    case Fragment.fragmentsActType.burstWithFallingParticles:
+                    case Fragment.fragmentsActType.burstWithTwinkle:
+                        const twinkleParticlesSize = 4;
                         const particle = new Particle(
                             Particle.state.flutter,
                             fragmentsActType,
                             fragmentEndPoint.x,
                             fragmentEndPoint.y,
                             fragmentEndPoint.x,
-                            fragmentEndPoint.y + Utils.gravity.light,
-                            Utils.fallingParticlesSize,
-                            Utils.fallingParticlesSize,
-                            Utils.getFallingParticlesDuration(),
+                            fragmentEndPoint.y,
+                            twinkleParticlesSize,
+                            twinkleParticlesSize,
+                            getTwinkleParticlesDuration(),
                             origin.color,
-                            180
+                            0
                         )
                         Fragment.fragmentArr.push(particle);
                         if(! Animation.isMove) requestAnimationFrame(Animation.move);
@@ -86,6 +87,10 @@ function generateBurstFragments(origin, explosion, startAngle, angleGap, distanc
         Fragment.fragmentArr.push(particle);
         if(! Animation.isMove) requestAnimationFrame(Animation.move);
     }   // for
+}
+    
+function getTwinkleParticlesDuration(){
+    return Math.random() * 2000;
 }
 
 export { burst };

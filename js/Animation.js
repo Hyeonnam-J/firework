@@ -1,5 +1,5 @@
 import { canvas, ctx } from './canvas.js';
-import Fragment from './fragments/fragment.js';
+import Fragment from './fragments/Fragment.js';
 
 export default class Animation {
     static isMove = false;
@@ -12,7 +12,7 @@ export default class Animation {
             fragment.draw();
         });
     
-        const anyFragmentsInProgress = Fragment.fragmentArr.some(fragment => fragment.progress < 1);
+        const anyFragmentsInProgress = Fragment.fragmentArr.length === 0 ? false : true;
     
         if (anyFragmentsInProgress) {
             Animation.isMove = true;

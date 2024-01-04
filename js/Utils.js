@@ -12,15 +12,14 @@ export default class Utils {
         return { x: x, y: y };
     }
 
-    static fallingParticlesSize = 4;
-    
-    static getFallingParticlesDuration(){
-        return Math.random() * 8000;
-    }
-    
-    static gravity = {
+    static pointGravity = {
         light: 10,
         heavy: 30,
+    }
+
+    static frameGravity = {
+        light: 0.4,
+        heavy: 1,
     }
     
     static colors = {

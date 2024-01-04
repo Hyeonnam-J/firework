@@ -3,7 +3,7 @@ export default class Fragment {
 
     static fragmentsActType = {
         burst: 'burst',
-        burstWithFallingParticles: 'burstWithFallingParticles',
+        burstWithTwinkle: 'burstWithTwinkle',
         
         erupt: 'erupt',
     }

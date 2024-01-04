@@ -1,6 +1,5 @@
 import { ctx } from '../canvas.js';
-import Utils from '../Utils.js';
-import Fragment from './fragment.js';
+import Fragment from './Fragment.js';
 
 export default class Trace {
     constructor(x, y, color) {
