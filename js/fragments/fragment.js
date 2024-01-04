@@ -5,7 +5,9 @@ export default class Fragment {
         burst: 'burst',
         burstWithTwinkle: 'burstWithTwinkle',
         
-        erupt: 'erupt',
+        singleErupt: 'singleErupt',
+        doubleErupt: 'doubleErupt',
+        tripleErupt: 'tripleErupt',
     }
 }
 

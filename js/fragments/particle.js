@@ -43,6 +43,10 @@ export default class Particle {
         this.currentX = this.startX + (this.endX - this.startX) * easingFactor;
         this.currentY = this.startY + (this.endY - this.startY) * easingFactor;
 
+        this.modifyCoordinates();
+    }
+
+    modifyCoordinates(){
         if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.erupt){
             this.endY += Utils.frameGravity.light;
         }
@@ -72,13 +76,7 @@ export default class Particle {
         ctx.fillStyle = gradient;
 
         // opacity
-        // burstWithTwinkle의 경우 opacity-progress에 영향을 미치는 duratioin 값이 파편마다 제각각.
-        // twinkle은 밝았던 게 갑자기 사라져도 이상하지 않다. 따라서 진행도가 1에 가까워질수록 opacity도 진하게.
-        if(this.state === Particle.state.flutter && this.fragmentsActType === Fragment.fragmentsActType.burstWithTwinkle){
-            ctx.globalAlpha = this.progress;
-        }else{
-            ctx.globalAlpha = 1 - this.progress;
-        }
+        ctx.globalAlpha = this.getOpacity();
         
         ctx.translate(this.currentX + this.width / 2, this.currentY + this.height / 2); // 입자 중심으로 이동
         ctx.rotate( (Math.PI * this.angle) / 180 );
@@ -103,5 +101,10 @@ export default class Particle {
                 if(! Animation.isMove) requestAnimationFrame(Animation.move);
             }
         }   // if(this.isTrace){
+    }   // draw()
+
+    getOpacity(){
+        if(this.state === Particle.state.flutter && this.fragmentsActType === Fragment.fragmentsActType.burstWithTwinkle) return ctx.globalAlpha = Math.random();
+        return ctx.globalAlpha = 1 - this.progress;
     }
 }

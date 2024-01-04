@@ -37,8 +37,16 @@ function fire(color, fragmentsActType, soaring, explosion) {
                     burst(origin, explosion, Fragment.fragmentsActType.burstWithTwinkle);
                     break;
 
-                case Fragment.fragmentsActType.erupt:
-                    erupt(origin, explosion, Fragment.fragmentsActType.erupt);
+                case Fragment.fragmentsActType.singleErupt:
+                    erupt(origin, explosion, Fragment.fragmentsActType.singleErupt);
+                    break;
+
+                case Fragment.fragmentsActType.doubleErupt:
+                    erupt(origin, explosion, Fragment.fragmentsActType.doubleErupt);
+                    break;
+
+                case Fragment.fragmentsActType.tripleErupt:
+                    erupt(origin, explosion, Fragment.fragmentsActType.tripleErupt);
                     break;
 
                 default:
