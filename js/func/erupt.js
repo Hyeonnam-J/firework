@@ -4,9 +4,10 @@ import Animation from '../Animation.js';
 import Fragment from '../fragments/fragment.js';
 
 function erupt(origin, explosion, fragmentsActType){
+    const particlesSize = 4;
     let plusDistanceValue = 0.01;
 
-    for(let i = 1; i > 0; i -= plusDistanceValue){
+    for(let i = 1; i >= 0; i -= plusDistanceValue){
         if(i < 0.4) plusDistanceValue = 0.02;
         const angle = (Math.random() * 20) - 10;    // -10 ~ 10도 랜덤 생성.
         
@@ -18,17 +19,17 @@ function erupt(origin, explosion, fragmentsActType){
         );
 
         const particle = new Particle(
+            Particle.state.explode,
+            fragmentsActType,
             origin.x,
             origin.y,
             fragmentEndPoint.x,
             fragmentEndPoint.y,
-            explosion.particlesWidth,
-            explosion.particlesHeight,
+            particlesSize,
+            particlesSize,
             explosion.duration,
             origin.color,
-            angle,
-            () => {},
-            false,
+            angle
         );  // parent new Particle
         
         Fragment.fragmentArr.push(particle);

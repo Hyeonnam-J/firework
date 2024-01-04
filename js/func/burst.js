@@ -31,6 +31,9 @@ function burst(origin, explosion, fragmentsActType) {
 }
 
 function generateBurstFragments(origin, explosion, startAngle, angleGap, distancePercentage, fragmentsActType){
+    const particlesWidth = 4;
+    const particlesHeight = 20;
+    
     for(let angle = startAngle; angle < 360; angle += angleGap){
         const fragmentEndPoint = Utils.calculateCoordinates(
             origin.x,
@@ -40,12 +43,14 @@ function generateBurstFragments(origin, explosion, startAngle, angleGap, distanc
         );
 
         const particle = new Particle(
+            Particle.state.explode,
+            fragmentsActType,
             origin.x,
             origin.y,
             fragmentEndPoint.x,
             fragmentEndPoint.y,
-            explosion.particlesWidth,
-            explosion.particlesHeight,
+            particlesWidth,
+            particlesHeight,
             explosion.duration,
             origin.color,
             angle,
@@ -56,13 +61,15 @@ function generateBurstFragments(origin, explosion, startAngle, angleGap, distanc
                     
                     case Fragment.fragmentsActType.burstWithFallingParticles:
                         const particle = new Particle(
+                            Particle.state.flutter,
+                            fragmentsActType,
                             fragmentEndPoint.x,
                             fragmentEndPoint.y,
                             fragmentEndPoint.x,
-                            fragmentEndPoint.y + Utils.values.lightGravity,
-                            Utils.values.fallingParticlesSize,
-                            Utils.values.fallingParticlesSize,
-                            Utils.values.fallingParticlesDuration(),
+                            fragmentEndPoint.y + Utils.gravity.light,
+                            Utils.fallingParticlesSize,
+                            Utils.fallingParticlesSize,
+                            Utils.getFallingParticlesDuration(),
                             origin.color,
                             180
                         )

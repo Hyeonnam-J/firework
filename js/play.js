@@ -3,24 +3,32 @@ import Fragment from './fragments/fragment.js';
 import { fire } from './func/fire.js';
 import Utils from './Utils.js';
 
-const color = Utils.colors.yellow;
+// const color = Utils.colors.white;
+// const fragmentsActType = Fragment.fragmentsActType.burst;
+// const soaring = {
+//     start_x: viewWidth * 0.5,
+//     end_x: viewWidth * 0.5,
+//     start_y: viewHeight,
+//     end_y: viewHeight * 0.5,
+//     duration: 2000,
+// };
+// const explosion = {
+//     distance: 300,
+//     duration: 5000,
+// };
+
+const color = Utils.colors.white;
 const fragmentsActType = Fragment.fragmentsActType.erupt;
 const soaring = {
     start_x: viewWidth * 0.5,
     end_x: viewWidth * 0.5,
     start_y: viewHeight,
     end_y: viewHeight * 0.7,
-
-    particlesWidth: Utils.values.soaringParticlesWidth,
-    particlesHeight: Utils.values.soarinParticlesHeight,
-
     duration: 2000,
 };
 const explosion = {
-    particlesWidth: Utils.values.eruptionParticlesSize,
-    particlesHeight: Utils.values.eruptionParticlesSize,
-    distance: 500,
-    duration: 10000,
+    distance: 1000,
+    duration: 5000,
 };
 fire(color, fragmentsActType, soaring, explosion);
 

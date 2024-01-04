@@ -5,13 +5,18 @@ import { erupt } from './erupt.js';
 import Fragment from '../fragments/fragment.js';
 
 function fire(color, fragmentsActType, soaring, explosion) {
+    const soaringParticlesWidth = 2.5;
+    const soaringParticlesHeight = 80;
+
     const particle = new Particle(
+        Particle.state.soar,
+        fragmentsActType,
         soaring.start_x,
         soaring.start_y,
         soaring.end_x,
         soaring.end_y,
-        soaring.particlesWidth,
-        soaring.particlesHeight,
+        soaringParticlesWidth,
+        soaringParticlesHeight,
         soaring.duration,
         color,
         0,

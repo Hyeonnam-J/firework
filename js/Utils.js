@@ -11,24 +11,16 @@ export default class Utils {
         // 결과 반환
         return { x: x, y: y };
     }
-    
-    static values = {
-        soaringParticlesWidth: 2.5,
-        soarinParticlesHeight: 80,
-    
-        burstParticlesWidth: 4,
-        burstParticlesHeight: 20,
 
-        eruptionParticlesSize: 4,
+    static fallingParticlesSize = 4;
     
-        fallingParticlesSize: 4,
-        fallingParticlesDuration: () => Math.random() * 2000 + 1000,
+    static getFallingParticlesDuration(){
+        return Math.random() * 8000;
+    }
     
-        traceSize: 1,
-        traceDuration: 2000,
-    
-        lightGravity: 10,
-        heavyGravity: 30,
+    static gravity = {
+        light: 10,
+        heavy: 30,
     }
     
     static colors = {

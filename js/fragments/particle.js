@@ -2,16 +2,19 @@ import { ctx } from '../canvas.js';
 import Trace from './Trace.js';
 import Fragment from './fragment.js';
 import Animation from '../Animation.js';
-import Utils from '../Utils.js';
 
 export default class Particle {
-    constructor(startX, startY, endX, endY, width, height, milliseconds, color, angle, 
-        onComplete = () => {},
-        isTrace = true
-    ) {
-        this.milliseconds = milliseconds;
-        this.startTime = performance.now();
+    static state = {
+        soar: 'soar',
+        explode: 'explode',
+        flutter: 'flutter',
+    }
 
+    constructor(state, fragmentsActType, startX, startY, endX, endY, width, height, milliseconds, color, angle, 
+        onComplete = () => {}
+    ) {
+        this.state = state;
+        this.fragmentsActType = fragmentsActType;
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;
@@ -21,8 +24,12 @@ export default class Particle {
         this.color = color;
         this.angle = angle;
         this.onComplete = onComplete;
-        this.isTrace = isTrace;
 
+        this.milliseconds = milliseconds;
+        this.startTime = performance.now();
+
+        // this.isTrace = fragmentsActType === Fragment.fragmentsActType.erupt ? false : true;
+        this.isTrace = true;
         this.traceCount = 0;
     }
 
@@ -61,7 +68,11 @@ export default class Particle {
         ctx.fillStyle = gradient;
 
         // opacity
-        ctx.globalAlpha = 1 - this.progress;
+        if(this.state === Particle.state.flutter && this.fragmentsActType === Fragment.fragmentsActType.burstWithFallingParticles){
+            ctx.globalAlpha = 0.5 - this.progress;
+        }else{
+            ctx.globalAlpha = 1 - this.progress;
+        }
 
         ctx.translate(this.currentX + this.width / 2, this.currentY + this.height / 2); // 입자 중심으로 이동
         ctx.rotate( (Math.PI * this.angle) / 180 );
@@ -79,11 +90,9 @@ export default class Particle {
                 const trace = new Trace(
                     this.currentX,
                     this.currentY,
-                    Utils.values.traceSize,
-                    Utils.values.traceSize,
                     this.color
                 );
-        
+
                 Fragment.fragmentArr.push(trace);
                 if(! Animation.isMove) requestAnimationFrame(Animation.move);
             }
