@@ -26,13 +26,14 @@ function erupt(origin, explosion, fragmentsActType){
 }
 
 function generateEruptionFragments(origin, explosion, fragmentsActType, direction){
-    const particlesSize = 4;
-    let plusDistanceValue = 0.01;
+    const particlesSize = 2;
+    let plusDistanceValue = 0.005;
 
-    const color = getColor();
+    const color = Utils.getColor();
 
-    for(let i = 1; i >= 0; i -= plusDistanceValue){
-        if(i < 0.4) plusDistanceValue = 0.02;
+    for(let i = 1; i > 0; i -= plusDistanceValue){
+        if(i < 0.4) plusDistanceValue = 0.01;
+        if(i < 0.2) plusDistanceValue = 0.02;
 
         let angle = 0;
         switch(direction){
@@ -64,7 +65,7 @@ function generateEruptionFragments(origin, explosion, fragmentsActType, directio
             origin.x,
             origin.y,
             explosion.distance * i,
-            angle - 90  // ctx.rotate() 시, 진행 방향과 머리 방향 일치를 위해.
+            angle
         );
 
         const particle = new Particle(
@@ -86,34 +87,29 @@ function generateEruptionFragments(origin, explosion, fragmentsActType, directio
     }   // for
 }
 
-// -10 ~ 10도 랜덤 생성.
+// -100 ~ -80도 랜덤 생성.
 function getCenterSideEruption(){
-    return (Math.random() * 20) - 10;    
+    return (Math.random() * 20) - 100;    
 }
 
-// -35 ~ -15도 랜덤 생성.
+// -125 ~ -105도 랜덤 생성.
 function getLeftSideEruption(){
-    return (Math.random() * 20) - 35;    
+    return (Math.random() * 20) - 125;    
 }
 
-// 15 ~ 35도 랜덤 생성.
+// -75 ~ -55도 랜덤 생성.
 function getRightSideEruption(){
-    return (Math.random() * 20) + 15;    
+    return (Math.random() * 20) - 75;    
 }
 
-// -25 ~ -5도 랜덤 생성.
+// -115 ~ -95도 랜덤 생성.
 function getHalfLeftSideEruption(){
-    return (Math.random() * 20) - 25;    
+    return (Math.random() * 20) - 115;    
 }
 
-// 5 ~ 25도 랜덤 생성.
+// -85 ~ -65 랜덤 생성.
 function getHalfRightSideEruption(){
-    return (Math.random() * 20) + 5;    
-}
-
-function getColor() {
-    const colorArr = Object.keys(Utils.colors);
-    return colorArr[Math.floor(Math.random() * colorArr.length)];
+    return (Math.random() * 20) - 85;    
 }
 
 export { erupt }

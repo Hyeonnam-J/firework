@@ -29,7 +29,7 @@ export default class Particle {
         this.milliseconds = milliseconds;
         this.startTime = performance.now();
 
-        this.isTrace = state === Particle.state.soar ? true : false;
+        this.isTrace = this.isTrace();
         this.traceCount = 0;
     }
 
@@ -47,9 +47,7 @@ export default class Particle {
     }
 
     modifyCoordinates(){
-        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.erupt){
-            this.endY += Utils.frameGravity.light;
-        }
+        
     }
 
     easeInOutQuad(t) {
@@ -67,17 +65,21 @@ export default class Particle {
             return;
         }
 
-        ctx.save();
-
-        // 그라디언트 생성
-        const gradient = ctx.createLinearGradient(this.currentX, this.currentY, this.currentX + this.width, this.currentY + this.height);
-        gradient.addColorStop(0, this.color); // 시작 부분
-        gradient.addColorStop(1, 'transparent');    // 끝 부분 (transparent는 투명 색)
-        ctx.fillStyle = gradient;
-
         // opacity
         ctx.globalAlpha = this.getOpacity();
-        
+
+        ctx.save();
+
+        // 그라디언트
+        if(this.isGradient()){
+            const gradient = ctx.createLinearGradient(this.currentX, this.currentY, this.currentX + this.width, this.currentY + this.height);
+            gradient.addColorStop(0, this.color); // 시작 부분
+            gradient.addColorStop(1, 'transparent');    // 끝 부분 (transparent는 투명 색)
+            ctx.fillStyle = gradient;
+        }else {
+            ctx.fillStyle = this.color;
+        }
+
         ctx.translate(this.currentX + this.width / 2, this.currentY + this.height / 2); // 입자 중심으로 이동
         ctx.rotate( (Math.PI * this.angle) / 180 );
         ctx.translate(-(this.currentX + this.width / 2), -(this.currentY + this.height / 2)); // 원래 위치로 이동
@@ -103,8 +105,26 @@ export default class Particle {
         }   // if(this.isTrace){
     }   // draw()
 
+    isTrace(){
+        if(this.state === Particle.state.soar) true;
+        return false;
+    }
+
     getOpacity(){
-        if(this.state === Particle.state.flutter && this.fragmentsActType === Fragment.fragmentsActType.burstWithTwinkle) return ctx.globalAlpha = Math.random();
-        return ctx.globalAlpha = 1 - this.progress;
+        if(this.state === Particle.state.flutter && this.fragmentsActType === Fragment.fragmentsActType.burstWithTwinkle) return Math.random();
+        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.bomb_olympic) return Math.random();
+        return 1 - this.progress;
+    }
+
+    isGradient(){
+        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.bomb_olympic){
+            return false;
+        }
+        
+        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.tripleErupt){
+            return false;
+        }
+
+        return true;
     }
 }

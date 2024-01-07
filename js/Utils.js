@@ -19,11 +19,12 @@ export default class Utils {
 
     static frameGravity = {
         light: 0.4,
+        medium: 0.7,
         heavy: 1,
     }
     
     static colors = {
-        yellow: "#f8fc03",    // 노란 계통
+        yellow: "#f8fc03",     // 노란 계통
         lime: "#88fc03",       // 연두 계통
         green: "#03fc4e",      // 초록 계통
         red: "#fc0303",        // 빨간 계통
@@ -35,4 +36,9 @@ export default class Utils {
         blue: "#0390fc",       // 파랑 계통
         orange: "#fc7703"      // 주황 계통
     };
+
+    static getColor() {
+        const colorArr = Object.keys(Utils.colors);
+        return colorArr[Math.floor(Math.random() * colorArr.length)];
+    }
 }

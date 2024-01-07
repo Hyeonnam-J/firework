@@ -3,6 +3,7 @@ import Animation from '../Animation.js';
 import { burst } from './burst.js';
 import { erupt } from './erupt.js';
 import Fragment from '../fragments/Fragment.js';
+import { bomb } from './bomb.js';
 
 function fire(color, fragmentsActType, soaring, explosion) {
     const soaringParticlesWidth = 2.5;
@@ -47,6 +48,10 @@ function fire(color, fragmentsActType, soaring, explosion) {
 
                 case Fragment.fragmentsActType.tripleErupt:
                     erupt(origin, explosion, Fragment.fragmentsActType.tripleErupt);
+                    break;
+
+                case Fragment.fragmentsActType.bomb_olympic:
+                    bomb(origin, explosion, Fragment.fragmentsActType.bomb_olympic);
                     break;
 
                 default:

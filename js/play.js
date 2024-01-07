@@ -3,22 +3,17 @@ import Fragment from './fragments/Fragment.js';
 import { fire } from './acts/fire.js';
 import Utils from './Utils.js';
 
-// const color = Utils.colors.white;
-// const fragmentsActType = Fragment.fragmentsActType.burstWithTwinkle;
-// const soaring = {
-//     start_x: viewWidth * 0.5,
-//     end_x: viewWidth * 0.5,
-//     start_y: viewHeight,
-//     end_y: viewHeight * 0.5,
-//     duration: 2000,
-// };
-// const explosion = {
-//     distance: 300,
-//     duration: 5000,
-// };
+const burst_duration = 300;
+const burst_distance = 300;
+
+const erupt_duration = 3000;
+const erupt_distance = 500;
+
+const bomb_olympic_duration = 200;
+const bomb_olympic_distance = 200;
 
 const color = Utils.colors.white;
-const fragmentsActType = Fragment.fragmentsActType.tripleErupt;
+const fragmentsActType = Fragment.fragmentsActType.burstWithTwinkle;
 const soaring = {
     start_x: viewWidth * 0.5,
     end_x: viewWidth * 0.5,
@@ -27,7 +22,8 @@ const soaring = {
     duration: 2000,
 };
 const explosion = {
-    distance: 500,
-    duration: 5000,
+    distance: bomb_olympic_distance,
+    duration: 3000,
 };
+
 fire(color, fragmentsActType, soaring, explosion);

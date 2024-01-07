@@ -8,6 +8,8 @@ export default class Fragment {
         singleErupt: 'singleErupt',
         doubleErupt: 'doubleErupt',
         tripleErupt: 'tripleErupt',
+
+        bomb_olympic: 'bomb_olympic',
     }
 }
 
