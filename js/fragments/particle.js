@@ -47,7 +47,9 @@ export default class Particle {
     }
 
     modifyCoordinates(){
-        
+        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.bomb_olympic){
+            this.endY += Math.random();            
+        }
     }
 
     easeInOutQuad(t) {
@@ -106,13 +108,14 @@ export default class Particle {
     }   // draw()
 
     isTrace(){
-        if(this.state === Particle.state.soar) true;
+        if(this.state === Particle.state.soar) return true;
+        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.bomb_olympic) return true;
         return false;
     }
 
     getOpacity(){
         if(this.state === Particle.state.flutter && this.fragmentsActType === Fragment.fragmentsActType.burstWithTwinkle) return Math.random();
-        if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.bomb_olympic) return Math.random();
+        // if(this.state === Particle.state.explode && this.fragmentsActType === Fragment.fragmentsActType.bomb_olympic) return Math.random();
         return 1 - this.progress;
     }
 

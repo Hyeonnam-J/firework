@@ -1,3 +1,4 @@
+import Utils from '../Utils.js';
 import { ctx } from '../canvas.js';
 import Fragment from './Fragment.js';
 
@@ -31,7 +32,7 @@ export default class Trace {
         }
 
         ctx.fillStyle = this.color;
-        ctx.globalAlpha = 0.3;
+        ctx.globalAlpha = 1 - this.progress;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }
